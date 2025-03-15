@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import blogsData from '../data/blogs.json';
+import blogsData from '../../public/blogs/blogs.json';
 
 export default {
   name: 'BlogView',

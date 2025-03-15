@@ -1,7 +1,9 @@
 <template>
-  <div>
-    <button @click="$router.push('/')">Home</button>
-    <button @click="$router.push('/blog')">Full Blog</button>
+  <div class="container">
+    <div class="button-container">
+      <button @click="$router.push('/')">Home</button>
+      <button @click="$router.push('/blog')">Full Blog</button>
+    </div>
     <h1>{{ blogPost.title }}</h1>
     <p>{{ blogPost.date }}</p>
     <div v-html="blogPostContent"></div>
@@ -9,7 +11,6 @@
 </template>
 
 <script>
-import blogsData from '../data/blogs.json';
 import { marked } from 'marked';
 
 export default {
@@ -20,21 +21,44 @@ export default {
       blogPostContent: ''
     }
   },
-  created() {
+  async created() {
     const blogPostId = this.$route.params.id;
-    this.blogPost = blogsData.find(post => post.id === parseInt(blogPostId));
-    if (this.blogPost) {
-      this.blogPostContent = marked(this.blogPost.content);
+    try {
+      const response = await fetch(`/blogs/${blogPostId}/content.md`);
+      const markdown = await response.text();
+      this.blogPostContent = marked(markdown);
+
+      // Fetch blog post metadata from blogs.json
+      const blogsResponse = await fetch('/blogs/blogs.json');
+      if (!blogsResponse.ok) {
+        throw new Error('Failed to fetch blogs.json');
+      }
+      const blogs = await blogsResponse.json();
+      const post = blogs.find(post => post.id === blogPostId);
+      if (post) {
+        this.blogPost = post;
+      } else {
+        console.error('Blog post not found');
+      }
+    } catch (error) {
+      console.error('Error loading blog post content:', error);
     }
   }
 }
 </script>
 
 <style scoped>
-div {
-  text-align: center;
+.container {
+  width: 60%;
+  margin: 0 auto;
+  text-align: left;
   padding: 20px;
   font-family: 'Montserrat', sans-serif;
+}
+
+.button-container {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 button {

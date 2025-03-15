@@ -57,6 +57,7 @@
           <div v-for="project in topProjects" :key="project.id">
             <h3>{{ project.title }}</h3>
             <p>{{ project.description }}</p>
+            <img :src="`/projects/${project.id}/image.png`" :alt="project.title" class="project-image" />
             <router-link :to="project.link">
               <button class="project-button">Learn more</button>
             </router-link>
@@ -84,8 +85,8 @@
 </template>
 
 <script>
-import projectsData from '../data/projects.json';
-import blogsData from '../data/blogs.json';
+import projectsData from '../../public/projects/projects.json';
+import blogsData from '../../public/blogs/blogs.json';
 
 export default {
   name: 'HomeView',
@@ -118,6 +119,8 @@ export default {
   flex-direction: column;
   background-color: #f5f5f5;
   justify-content: space-between;
+  overflow-y: auto;
+  padding-top: 5vh;
 }
 
 .right-side {
@@ -126,11 +129,13 @@ export default {
   padding: 20px;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 }
 
 .about-me-blurb {
+  margin-top: 40px;
   font-size: 1.2em;
-  margin-bottom: 100px;
+  margin-bottom: 40px;
 }
 
 header {
@@ -155,27 +160,19 @@ header p {
   white-space: nowrap;
   width: 100%;
   box-sizing: border-box;
-  height: 80px;
-    margin-bottom: 100px;
+  height: auto;
+  margin-bottom: 20px;
 }
 
 .ticker {
-  display: inline-block;
-  animation: ticker 10s linear infinite;
-}
-
-@keyframes ticker {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .ticker .tag {
   display: inline-block;
-  margin: 0 10px;
+  margin: 10px 15px;
   padding: 10px 20px;
   font-size: 1em;
   background-color: #2c3e50;
@@ -191,6 +188,7 @@ header p {
 }
 
 .resume-button {
+  margin-top: 20%;
   padding: 20px 40px;
   font-size: 1em;
   background-color: #2c3e50;
@@ -273,6 +271,13 @@ section div div button {
   color: inherit;
 }
 
+.project-image {
+  width: 100%;
+  height: auto;
+  margin: 10px 0;
+  max-height: 150px;
+}
+
 footer {
   text-align: center;
   padding: 20px;
@@ -282,7 +287,7 @@ footer .social-links {
   display: flex;
   justify-content: center;
   gap: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 footer .social-links img {

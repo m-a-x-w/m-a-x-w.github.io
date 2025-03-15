@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import projectsData from '../data/projects.json';
 import { marked } from 'marked';
 
 export default {
@@ -18,11 +17,14 @@ export default {
       projectContent: ''
     }
   },
-  created() {
+  async created() {
     const projectIdentifier = this.$route.params.identifier;
-    this.project = projectsData.find(project => project.link === `/project/${projectIdentifier}`);
-    if (this.project) {
-      this.projectContent = marked(this.project.content);
+    try {
+      const response = await fetch(`/projects/${projectIdentifier}/content.md`);
+      const markdown = await response.text();
+      this.projectContent = marked(markdown);
+    } catch (error) {
+      console.error('Error loading project content:', error);
     }
   }
 }

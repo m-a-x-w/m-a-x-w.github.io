@@ -23,13 +23,13 @@
 </template>
 
 <script>
-import projectsData from '../data/projects.json';
+import projects from '../../public/projects/projects.json';
 
 export default {
   name: 'ProjectsView',
   data() {
     return {
-      projects: projectsData,
+      projects: projects,
       selectedLabels: []
     }
   },

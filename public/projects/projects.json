@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "Project 1",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "labels": ["Go", "Python"],
+    "link": "/project/1"
+  },
+  {
+    "id": 2,
+    "title": "Project 2",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "labels": ["Python", "JavaScript"],
+    "link": "/project/2"
+  },
+  {
+    "id": 3,
+    "title": "Project 3",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "labels": ["Go", "JavaScript"],
+    "link": "/project/3"
+  }
+]
