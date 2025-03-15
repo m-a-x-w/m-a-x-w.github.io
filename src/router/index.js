@@ -6,7 +6,7 @@ import BlogPostView from '../views/BlogPost.vue'
 
 const routes = [
   { path: '/', name: 'Home', component: HomeView },
-  { path: '/project/:id', name: 'Project', component: ProjectView },
+  { path: '/project/:identifier', name: 'Project', component: ProjectView },
   { path: '/blog', name: 'Blog', component: BlogView },
   { path: '/blog/:id', name: 'BlogPost', component: BlogPostView }
 ]

@@ -1,22 +1,30 @@
 <template>
   <div>
     <button @click="$router.push('/')">Home</button>
-    <h1>Project Title</h1>
-    <button class="project-button">GitHub</button>
-    <div>
-      <button class="tag">Go</button>
-      <button class="tag">Python</button>
-      <button class="tag">Java</button>
-      <button class="tag">C++</button>
-      <button class="tag">Rust</button>
-    </div>
-    <div>Markdown here</div>
+    <h1>{{ project.title }}</h1>
+    <div v-html="projectContent"></div>
   </div>
 </template>
 
 <script>
+import projectsData from '../data/projects.json';
+import { marked } from 'marked';
+
 export default {
-  name: 'ProjectView'
+  name: 'ProjectView',
+  data() {
+    return {
+      project: {},
+      projectContent: ''
+    }
+  },
+  created() {
+    const projectIdentifier = this.$route.params.identifier;
+    this.project = projectsData.find(project => project.link === `/project/${projectIdentifier}`);
+    if (this.project) {
+      this.projectContent = marked(this.project.content);
+    }
+  }
 }
 </script>
 
@@ -31,26 +39,9 @@ button {
   margin: 5px;
   padding: 10px 20px;
   font-size: 1em;
-}
-
-.project-button {
-  padding: 10px 20px;
-  font-size: 1em;
   background-color: #2c3e50;
   color: white;
   border: none;
-  cursor: pointer;
-}
-
-.tag {
-  display: inline-block;
-  margin: 0 10px;
-  padding: 10px 20px;
-  font-size: 1em;
-  background-color: #2c3e50;
-  color: white;
-  border: none;
-  border-radius: 5px;
   cursor: pointer;
 }
 

@@ -53,20 +53,26 @@
     <div class="right-side">
       <section>
         <h2>Top Projects:</h2>
-        <div>
+        <div v-if="topProjects.length">
           <div v-for="project in topProjects" :key="project.id">
             <h3>{{ project.title }}</h3>
             <p>{{ project.description }}</p>
-            <button class="project-button">Learn more</button>
+            <router-link :to="project.link">
+              <button class="project-button">Learn more</button>
+            </router-link>
           </div>
         </div>
+        <p v-else>No projects available.</p>
         <button class="project-button">View all projects</button>
       </section>
       <section>
         <h2>Recent blog posts:</h2>
-        <div v-for="post in recentPosts" :key="post.id" class="blog-post">
-          <p>{{ post.date }} - {{ post.title }}</p>
+        <div v-if="recentPosts.length">
+          <router-link v-for="post in recentPosts" :key="post.id" :to="post.link" class="blog-post">
+            <p>{{ post.date }} - {{ post.title }}</p>
+          </router-link>
         </div>
+        <p v-else>No blog posts available.</p>
         <button class="blog-button">View more posts</button>
       </section>
     </div>
@@ -74,21 +80,20 @@
 </template>
 
 <script>
+import projectsData from '../data/projects.json';
+import blogsData from '../data/blogs.json';
+
 export default {
   name: 'HomeView',
   data() {
     return {
-      topProjects: [
-        { id: 1, title: 'Project 1', description: 'Lorem ipsum dolor sit amet...' },
-        { id: 2, title: 'Project 2', description: 'Lorem ipsum dolor sit amet...' },
-        { id: 3, title: 'Project 3', description: 'Lorem ipsum dolor sit amet...' }
-      ],
-      recentPosts: [
-        { id: 1, date: '01/01/2000', title: 'Lorem ipsum dolor sit amet...' },
-        { id: 2, date: '01/01/2000', title: 'Lorem ipsum dolor sit amet...' },
-        { id: 3, date: '01/01/2000', title: 'Lorem ipsum dolor sit amet...' }
-      ]
+      topProjects: [],
+      recentPosts: []
     }
+  },
+  created() {
+    this.topProjects = projectsData.slice(0, 3);
+    this.recentPosts = blogsData.slice(-3).reverse();
   }
 }
 </script>
@@ -97,13 +102,13 @@ export default {
 .container {
   display: flex;
   height: 100vh;
-  margin: 0; /* Remove any margin from the container */
+  margin: 0;
   font-family: 'Montserrat', sans-serif;
 }
 
 .left-side {
-  flex: 1; /* 1/3 of the width */
-  min-width: 300px; /* Set a minimum width for the left side */
+  flex: 1;
+  min-width: 300px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -112,8 +117,8 @@ export default {
 }
 
 .right-side {
-  flex: 2; /* 2/3 of the width */
-  min-width: 600px; /* Set a minimum width for the right side */
+  flex: 2;
+  min-width: 600px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -125,10 +130,10 @@ export default {
 }
 
 header {
-  text-align: left; /* Left-align the text */
+  text-align: left;
   flex: 1;
-  margin: 0; /* Remove any margin from the header */
-  padding: 0; /* Remove any padding from the header */
+  margin: 0;
+  padding: 0;
 }
 
 header h1 {
@@ -146,7 +151,7 @@ header p {
   white-space: nowrap;
   width: 100%;
   box-sizing: border-box;
-  height: 80px; /* Increase the height for the ticker */
+  height: 80px;
     margin-bottom: 100px;
 }
 
@@ -178,7 +183,7 @@ header p {
 
 .resume-button-wrapper {
   display: flex;
-  justify-content: center; /* Center the button horizontally */
+  justify-content: center;
 }
 
 .resume-button {
@@ -227,9 +232,10 @@ section div {
 }
 
 section div div {
-  background-color: #e0e0e0;
+  background-color: #f5f5f5;
   padding: 20px;
   margin: 10px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
   width: 30%;
   box-sizing: border-box;
 }
@@ -255,6 +261,12 @@ section div div button {
   margin: 20px 0;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 900px;
+  box-sizing: border-box;
+  display: block;
+  text-decoration: none;
+  color: inherit;
 }
 
 footer {

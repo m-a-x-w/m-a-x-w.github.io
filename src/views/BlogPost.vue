@@ -1,22 +1,32 @@
 <template>
   <div>
-    <button @click="$router.push('/blog')">Home</button>
-    <h1>Blog Title Here</h1>
-    <p>01/01/2000</p>
-    <div>
-      <button class="tag">Go</button>
-      <button class="tag">Python</button>
-      <button class="tag">Java</button>
-      <button class="tag">C++</button>
-      <button class="tag">Rust</button>
-    </div>
-    <div>Markdown here</div>
+    <button @click="$router.push('/')">Home</button>
+    <button @click="$router.push('/blog')">All Blog Post's</button>
+    <h1>{{ blogPost.title }}</h1>
+    <p>{{ blogPost.date }}</p>
+    <div v-html="blogPostContent"></div>
   </div>
 </template>
 
 <script>
+import blogsData from '../data/blogs.json';
+import { marked } from 'marked';
+
 export default {
-  name: 'BlogPostView'
+  name: 'BlogPostView',
+  data() {
+    return {
+      blogPost: {},
+      blogPostContent: ''
+    }
+  },
+  created() {
+    const blogPostId = this.$route.params.id;
+    this.blogPost = blogsData.find(post => post.id === parseInt(blogPostId));
+    if (this.blogPost) {
+      this.blogPostContent = marked(this.blogPost.content);
+    }
+  }
 }
 </script>
 
@@ -29,19 +39,11 @@ div {
 
 button {
   margin: 5px;
-  padding: 5px 10px;
-  font-size: 0.8em;
-}
-
-.tag {
-  display: inline-block;
-  margin: 0 10px;
-  padding: 5px 10px;
-  font-size: 0.8em;
+  padding: 10px 40px;
+  font-size: 1.2em;
   background-color: #2c3e50;
   color: white;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
 }
 
@@ -58,4 +60,5 @@ p {
 div div {
   margin: 20px 0;
 }
+
 </style>
