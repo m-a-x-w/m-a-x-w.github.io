@@ -8,8 +8,7 @@
             I am a software engineer and cybersecurity enthusiast with a passion for
             learning and problem-solving. I have experience with a variety of
             programming languages and technologies, and I am always looking for new
-            challenges and opportunities to grow.
-
+            challenges and opportunities to grow!
         </p>
         <div class="ticker-wrapper">
           <div class="ticker">
