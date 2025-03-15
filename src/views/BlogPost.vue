@@ -1,7 +1,7 @@
 <template>
   <div>
     <button @click="$router.push('/')">Home</button>
-    <button @click="$router.push('/blog')">All Blog Post's</button>
+    <button @click="$router.push('/blog')">Full Blog</button>
     <h1>{{ blogPost.title }}</h1>
     <p>{{ blogPost.date }}</p>
     <div v-html="blogPostContent"></div>

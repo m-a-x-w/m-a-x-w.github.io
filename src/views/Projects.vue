@@ -6,44 +6,38 @@
         <input type="checkbox" :id="label.name" :value="label.name" v-model="selectedLabels" />
         <label :for="label.name">{{ label.name }} ({{ label.count }})</label>
       </div>
-      <h2>Sort by Date</h2>
-      <select v-model="sortOrder">
-        <option value="newest">Newest First</option>
-        <option value="oldest">Oldest First</option>
-      </select>
     </div>
     <div class="right-side">
       <button @click="$router.push('/')">Home</button>
-      <h1>Blog Posts</h1>
-      <div v-if="filteredPosts.length">
-        <div v-for="post in sortedPosts" :key="post.id" class="blog-post">
-          <router-link :to="post.link">
-            <p>{{ post.date }} - {{ post.title }}</p>
-          </router-link>
+      <h1>Projects</h1>
+      <div v-if="filteredProjects.length" class="projects-grid">
+        <div v-for="project in filteredProjects" :key="project.id" class="project-item">
+          <h3>{{ project.title }}</h3>
+          <p>{{ project.description }}</p>
+          <button @click="$router.push(project.link)">Learn More</button>
         </div>
       </div>
-      <p v-else>No blog posts available.</p>
+      <p v-else>No projects available.</p>
     </div>
   </div>
 </template>
 
 <script>
-import blogsData from '../data/blogs.json';
+import projectsData from '../data/projects.json';
 
 export default {
-  name: 'BlogView',
+  name: 'ProjectsView',
   data() {
     return {
-      blogPosts: blogsData,
-      selectedLabels: [],
-      sortOrder: 'newest'
+      projects: projectsData,
+      selectedLabels: []
     }
   },
   computed: {
     labels() {
       const labelCounts = {};
-      this.blogPosts.forEach(post => {
-        post.labels.forEach(label => {
+      this.projects.forEach(project => {
+        project.labels.forEach(label => {
           if (!labelCounts[label]) {
             labelCounts[label] = 0;
           }
@@ -55,22 +49,13 @@ export default {
     sortedLabels() {
       return [...this.labels].sort((a, b) => b.count - a.count);
     },
-    filteredPosts() {
+    filteredProjects() {
       if (this.selectedLabels.length === 0) {
-        return this.blogPosts;
+        return this.projects;
       }
-      return this.blogPosts.filter(post =>
-        post.labels.some(label => this.selectedLabels.includes(label))
+      return this.projects.filter(project =>
+        project.labels.some(label => this.selectedLabels.includes(label))
       );
-    },
-    sortedPosts() {
-      return [...this.filteredPosts].sort((a, b) => {
-        if (this.sortOrder === 'newest') {
-          return new Date(b.date) - new Date(a.date);
-        } else {
-          return new Date(a.date) - new Date(b.date);
-        }
-      });
     }
   }
 }
@@ -110,13 +95,19 @@ h2 {
   margin: 20px 0;
 }
 
-.blog-post {
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.project-item {
   background-color: #f5f5f5;
   padding: 10px;
   margin: 20px 0;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 100%;
+  width: calc(33.333% - 20px);
   box-sizing: border-box;
   display: block;
   text-decoration: none;

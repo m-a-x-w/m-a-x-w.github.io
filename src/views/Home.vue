@@ -30,16 +30,16 @@
       </header>
       <footer>
         <div class="social-links">
-          <a href="mailto:example@example.com">
+          <a href="mailto:maxweinstein@proton.me">
             <img src="/mail.svg" alt="Email" />
           </a>
-          <a href="https://www.linkedin.com/in/example" target="_blank">
+          <a href="https://www.linkedin.com/in/max-weinstein-04a68423b" target="_blank">
             <img src="/linkedin.svg" alt="LinkedIn" />
           </a>
-          <a href="https://github.com/example" target="_blank">
+          <a href="https://github.com/m-a-x-w" target="_blank">
             <img src="/github.svg" alt="GitHub" />
           </a>
-          <a href="https://leetcode.com/example" target="_blank">
+          <a href="https://leetcode.com/willaddlater" target="_blank">
             <img src="/leetcode.svg" alt="LeetCode" />
           </a>
         </div>
@@ -63,7 +63,9 @@
           </div>
         </div>
         <p v-else>No projects available.</p>
-        <button class="project-button">View all projects</button>
+        <router-link to="/projects">
+          <button class="project-button">View all projects</button>
+        </router-link>
       </section>
       <section>
         <h2>Recent blog posts:</h2>
@@ -73,7 +75,9 @@
           </router-link>
         </div>
         <p v-else>No blog posts available.</p>
-        <button class="blog-button">View more posts</button>
+        <router-link to="/blog">
+          <button class="blog-button">View more posts</button>
+        </router-link>
       </section>
     </div>
   </div>

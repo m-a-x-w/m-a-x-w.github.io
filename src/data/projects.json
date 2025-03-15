@@ -1,19 +1,19 @@
 [
   {
     "id": 1,
-    "title": "Project 3",
+    "title": "Project 1",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     "labels": ["Go", "Python"],
     "link": "/project/1",
-    "content": "# Project 1\nLorem ipsum dolor sit amet, consectetur adipiscing elit."
+    "content": "# Project 1\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\n![Project Image](/projects/projectexample/image1.png)"
   },
   {
     "id": 2,
     "title": "Project 2",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    "labels": ["Go", "Python"],
+    "labels": ["Go", "a"],
     "link": "/project/2",
-    "content": "# Project 2\nLorem ipsum dolor sit amet, consectetur adipiscing elit."
+    "content": "# Project 2\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\n![Project Image](/projects/projectexample/image2.png)"
   },
   {
     "id": 3,
@@ -21,7 +21,7 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     "labels": ["Go", "Python"],
     "link": "/project/3",
-    "content": "# Project 3\nLorem ipsum dolor sit amet, consectetur adipiscing elit."
+    "content": "# Project 3\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\n![Project Image](/projects/projectexample/image3.png)"
   },
   {
     "id": 4,
@@ -29,6 +29,6 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     "labels": ["Go", "Python"],
     "link": "/project/4",
-    "content": "# Project 4\nLorem ipsum dolor sit amet, consectetur adipiscing elit."
+    "content": "# Project 4\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\n![Project Image](/projects/projectexample/image4.png)"
   }
 ]

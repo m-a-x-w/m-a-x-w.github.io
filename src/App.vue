@@ -17,18 +17,17 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 0; /* Remove margin-top */
+  margin-top: 0;
 }
 
-/* Add global styles here */
 body {
   font-family: 'Montserrat', sans-serif;
   margin: 0;
   padding: 0;
-  height: 100vh; /* Ensure body takes full height */
+  height: 100vh;
 }
 
 html {
-  height: 100%; /* Ensure html takes full height */
+  height: 100%;
 }
 </style>
