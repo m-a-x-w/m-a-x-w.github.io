@@ -3,7 +3,7 @@
     <div class="left-side">
       <header>
         <h1>Max Weinstein</h1>
-        <p>SWE & Cybersecurity</p>
+        <p>Software Engineering & Cybersecurity</p>
         <p class="about-me-blurb">
             I am a software engineer and cybersecurity enthusiast with a passion for
             learning and problem-solving. I have experience with a variety of
