@@ -15,7 +15,9 @@
         <div class="section">
           <h2>Skills</h2>
           <p class="skills">
-            Go • Python • Java • C++ • Rust • JavaScript • Vue
+            Go • Python • Java • C++ • Rust • JavaScript • Vue • Svelte
+            <br />
+            Reverse Engineering • Penetration Testing • Data Analysis
           </p>
         </div>
 
@@ -27,6 +29,7 @@
                 → {{ project.title }}
               </router-link>
             </div>
+            <router-link to="/projects" class="view-all">view all projects →</router-link>
           </div>
 
           <div class="column">
@@ -36,11 +39,11 @@
                 → {{ post.title }}
               </router-link>
             </div>
+            <router-link to="/blog" class="view-all">view all posts →</router-link>
           </div>
         </div>
 
         <div class="section">
-          <h2>Contact</h2>
           <div class="social-links">
             <a href="mailto:maxweinstein@proton.me" title="Email">
               <img src="/static/mail.svg" alt="Email" />
@@ -160,6 +163,7 @@ h2::after {
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
+  margin-bottom: 1rem;
 }
 
 .list-item {
@@ -178,8 +182,10 @@ h2::after {
 
 .social-links {
   display: flex;
-  gap: 1.5rem;
-  margin-top: 1rem;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-top: 2rem;
+  padding: 0.5rem 0;
 }
 
 .social-links img {
@@ -190,6 +196,22 @@ h2::after {
 }
 
 .social-links img:hover {
+  opacity: 1;
+}
+
+.view-all {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  opacity: 0.8;
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+.view-all:hover {
+  color: var(--primary);
+  transform: translateX(5px);
   opacity: 1;
 }
 
@@ -210,4 +232,5 @@ h2::after {
   .column:first-child {
     margin-bottom: 0;
   }
-}</style>
+}
+</style>
