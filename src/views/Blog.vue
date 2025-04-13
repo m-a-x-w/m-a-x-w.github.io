@@ -79,72 +79,107 @@ export default {
 <style scoped>
 .container {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
   font-family: 'Montserrat', sans-serif;
 }
 
 .left-side {
   flex: 1;
-  min-width: 300px;
-  padding: 20px;
-  background-color: #f5f5f5;
-  overflow-y: auto;
+  min-width: 250px;
+  max-width: 300px;
+  padding: 60px 30px;
+  background-color: var(--background);
+  border-right: 1px solid var(--border);
 }
 
 .right-side {
-  flex: 2;
-  min-width: 600px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
+  flex: 3;
+  padding: 60px 40px;
+  background-color: var(--background-alt);
 }
 
 h1 {
-  font-size: 2.5em;
-  margin: 20px 0;
+  font-size: 2.4em;
+  margin: 0 0 30px;
+  color: var(--text-primary);
 }
 
 h2 {
-  font-size: 2em;
-  margin: 20px 0;
+  font-size: 1.4em;
+  margin: 30px 0 20px;
+  color: var(--text-primary);
 }
 
 .blog-post {
-  background-color: #f5f5f5;
-  padding: 10px;
-  margin: 20px 0;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  box-sizing: border-box;
-  display: block;
-  text-decoration: none;
-  color: inherit;
+  background-color: var(--background);
+  padding: 20px 25px;
+  margin: 15px 0;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
 }
 
-button {
-  margin: 5px;
-  padding: 10px 20px;
-  font-size: 1em;
-  background-color: #2c3e50;
-  color: white;
-  border: none;
-  cursor: pointer;
-  width: auto;
-  align-self: flex-start;
+.blog-post:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
 }
 
-input {
+.blog-post p {
+  font-size: 1.1em;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+input[type="checkbox"] {
   margin-right: 10px;
+  cursor: pointer;
+}
+
+label {
+  font-size: 1em;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: block;
+  margin-bottom: 10px;
+}
+
+label:hover {
+  color: var(--text-primary);
 }
 
 select {
-  margin-top: 10px;
-  padding: 5px;
+  width: 100%;
+  padding: 12px;
   font-size: 1em;
-  background-color: #f5f5f5;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--text-primary);
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  
+  .left-side {
+    max-width: 100%;
+    padding: 40px 20px;
+  }
+  
+  .right-side {
+    padding: 40px 20px;
+  }
 }
 </style>
