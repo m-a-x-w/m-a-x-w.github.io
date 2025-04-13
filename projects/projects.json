@@ -1,23 +1,23 @@
 [
   {
     "id": 1,
-    "title": "Project 1",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    "labels": ["Go", "Python"],
-    "link": "/project/1"
+    "title": "Auditory Insights",
+    "description": "Wearable technology to help people with hearing issues be more aware of their enviroment.",
+    "labels": ["Python", "ML", "Assistive", "Wearable"],
+    "link": "/project/hud-goggles"
   },
   {
     "id": 2,
-    "title": "Project 2",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    "labels": ["Python", "JavaScript"],
-    "link": "/project/2"
+    "title": "WeCode",
+    "description": "Educational website that adapts lesson plans and content to the users interests, to maximize attentiveness.",
+    "labels": ["Go", "ML", "Educational", "Website"],
+    "link": "/project/we-code"
   },
   {
     "id": 3,
-    "title": "Project 3",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    "labels": ["Go", "JavaScript"],
-    "link": "/project/3"
+    "title": "WeTrade",
+    "description": "Stock trading bot that integrates both stock data and news sentiments towards stocks to trade.",
+    "labels": ["Go", "Python","Scraping", "Website", "ML", "Networking"],
+    "link": "/project/we-trade"
   }
 ]
