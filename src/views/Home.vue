@@ -30,16 +30,16 @@
       <footer>
         <div class="social-links">
           <a href="mailto:maxweinstein@proton.me">
-            <img src="/mail.svg" alt="Email" />
+            <img src="/static/mail.svg" alt="Email" />
           </a>
           <a href="https://www.linkedin.com/in/max-weinstein-04a68423b" target="_blank">
-            <img src="/linkedin.svg" alt="LinkedIn" />
+            <img src="/static/linkedin.svg" alt="LinkedIn" />
           </a>
           <a href="https://github.com/m-a-x-w" target="_blank">
-            <img src="/github.svg" alt="GitHub" />
+            <img src="/static/github.svg" alt="GitHub" />
           </a>
           <a href="https://leetcode.com/willaddlater" target="_blank">
-            <img src="/leetcode.svg" alt="LeetCode" />
+            <img src="/static/leetcode.svg" alt="LeetCode" />
           </a>
         </div>
         <div>
