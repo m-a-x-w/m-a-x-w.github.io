@@ -77,7 +77,7 @@ button {
 
 button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
 }
 
 h1 {
