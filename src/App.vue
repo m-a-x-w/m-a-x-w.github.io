@@ -16,14 +16,14 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --primary: #4361ee;
-  --secondary: #3f37c9;
+  --primary: #7c3aed;
+  --secondary: #6d28d9;
   --text-primary: #2b2d42;
   --text-secondary: #515364;
   --background: #ffffff;
   --background-alt: #f8f9fa;
   --border: #e2e8f0;
-  --accent: #4895ef;
+  --accent: #8b5cf6;
 }
 
 #app {
@@ -62,7 +62,7 @@ button {
 
 button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(67, 97, 238, 0.15);
+  box-shadow: 0 5px 15px rgba(124, 58, 237, 0.15);
   background-color: var(--secondary);
 }
 

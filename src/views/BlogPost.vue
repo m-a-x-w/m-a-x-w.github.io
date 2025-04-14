@@ -67,7 +67,7 @@ export default {
 button {
   padding: 12px 30px;
   font-size: 1.1em;
-  background: linear-gradient(120deg, #2c3e50, #3498db);
+  background: linear-gradient(120deg, #6d28d9, #7c3aed);
   color: white;
   border: none;
   border-radius: 25px;

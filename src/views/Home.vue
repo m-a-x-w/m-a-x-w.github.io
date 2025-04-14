@@ -5,11 +5,8 @@
       <div class="subtitle">Software Engineering & Cybersecurity</div>
       
       <div class="markdown-content">
-        <p>
-          I am a software engineer and cybersecurity enthusiast with a passion for
-          learning and problem-solving. I have experience with a variety of
-          programming languages and technologies, and I am always looking for new
-          challenges and opportunities to grow!
+        <p class="intro-text">
+          I'm a full-stack developer with a focus on building intelligent, real-world applications across AI, SaaS, and data-driven systems.
         </p>
 
         <div class="section">
@@ -53,9 +50,6 @@
             </a>
             <a href="https://github.com/m-a-x-w" target="_blank" title="GitHub">
               <img src="/static/github.svg" alt="GitHub" />
-            </a>
-            <a href="https://leetcode.com/willaddlater" target="_blank" title="LeetCode">
-              <img src="/static/leetcode.svg" alt="LeetCode" />
             </a>
           </div>
         </div>
@@ -157,6 +151,21 @@ h2::after {
   font-family: monospace;
   color: var(--text-primary) !important;
   font-size: 1.05rem;
+}
+
+.current-work {
+  font-family: monospace;
+  color: var(--text-primary) !important;
+  font-size: 1.05rem;
+  display: block;
+  padding: 0.2rem 0.5rem;
+  background: rgba(var(--primary-rgb), 0.1);
+  border-radius: 4px;
+  margin: 0.5rem 0 1.6rem;
+}
+
+.intro-text {
+  margin-bottom: 0.5rem !important;
 }
 
 .list-items {

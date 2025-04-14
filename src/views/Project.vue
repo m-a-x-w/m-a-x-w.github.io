@@ -1,6 +1,9 @@
 <template>
   <div class="container">
-    <button @click="$router.push('/')">Home</button>
+    <div class="button-container">
+      <button @click="$router.push('/')">Home</button>
+      <button @click="$router.push('/projects')">Projects</button>
+    </div>
     <h1>{{ project.title }}</h1>
     <div class="project-content" v-html="projectContent"></div>
   </div>
@@ -107,6 +110,11 @@ h1 {
 :deep(ul), :deep(ol) {
   margin: 20px 0;
   padding-left: 30px;
+}
+
+:deep(ul:has(li > input[type="checkbox"])) {
+  list-style: none;
+  padding-left: 0;
 }
 
 :deep(li) {
