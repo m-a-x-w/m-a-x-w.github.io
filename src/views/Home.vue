@@ -202,10 +202,7 @@ h2::after {
   height: 28px;
   opacity: 0.7;
   transition: opacity 0.2s ease;
-}
-
-.social-links img:hover {
-  opacity: 1;
+  filter: invert(var(--icon-invert));
 }
 
 .view-all {
@@ -222,6 +219,10 @@ h2::after {
   color: var(--primary);
   transform: translateX(5px);
   opacity: 1;
+}
+
+.theme-toggle {
+  display: none;
 }
 
 @media (max-width: 768px) {

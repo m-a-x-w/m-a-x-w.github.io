@@ -28,7 +28,6 @@ export default {
       const markdown = await response.text();
       this.blogPostContent = marked(markdown);
 
-      // Fetch blog post metadata from blogs.json
       const blogsResponse = await fetch('/blogs/blogs.json');
       if (!blogsResponse.ok) {
         throw new Error('Failed to fetch blogs.json');
@@ -92,7 +91,6 @@ p {
   line-height: 1.8;
 }
 
-/* Style for markdown content */
 :deep(h2) {
   font-size: 1.8em;
   color: var(--text-primary);

@@ -63,7 +63,20 @@ h1 {
   border: 1px solid var(--border);
 }
 
-/* Style for markdown content */
+:deep(.metadata-section) {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+:deep(h4) {
+  text-align: center;
+  margin: 10px 0;
+}
+
+:deep(h2), :deep(h3), :deep(p), :deep(ul), :deep(ol) {
+  text-align: left;
+}
+
 :deep(h2) {
   font-size: 1.8em;
   color: var(--text-primary);

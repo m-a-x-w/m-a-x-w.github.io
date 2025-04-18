@@ -1,17 +1,17 @@
 # WeTrade
 
+<div class="metadata-section">
+
 ---
-#### Status: In Progress
-#### Github: Currently closed-source
-#### Related: `Go`, `Python`, `Scraping`, `Website`, `ML`, `Networking`
+#### Status: Complete
+#### Github: [Visit Repo!](https://github.com/m-a-x-w/we-trade/)
+#### Related: `Go`, `Python`, `ML`, `Web Scraping`, `Stock Trading`
 ---
+
+</div>
+
 ### Purpose:
 
 
 ### Technical:
 
-
-
-##### TODO (to achieve v1):
-
-- [ ] Finish website
