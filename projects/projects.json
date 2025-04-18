@@ -1,9 +1,9 @@
 [
   {
     "id": 1,
-    "title": "Auditory Insights",
-    "description": "Wearable technology to help people with hearing issues be more aware of their enviroment.",
-    "labels": ["Python", "ML", "Assistive", "Wearable"],
+    "title": "Auditory-InSights",
+    "description": "Award-winning wearable HUD device using ML and directional audio processing to help people with hearing impairments detect and locate important sounds in their environment.",
+    "labels": ["Python", "ML", "Embedded", "Assistive", "Wearable"],
     "link": "/project/hud-goggles"
   },
   {
