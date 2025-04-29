@@ -1,8 +1,15 @@
 <template>
   <div class="container">
     <main class="content">
-      <h1>Max Weinstein</h1>
-      <div class="subtitle">Software Engineering & Cybersecurity</div>
+      <div class="header-section">
+        <div class="title-container">
+          <h1>Max Weinstein</h1>
+          <div class="subtitle">Software Engineering & Cybersecurity</div>
+        </div>
+        <a href="/MaxWeinstein_resume.pdf" target="_blank" title="Resume" class="resume-link">
+          <span class="resume-text">RESUME</span>
+        </a>
+      </div>
       
       <div class="markdown-content">
         <p class="intro-text">
@@ -90,6 +97,18 @@ export default {
   line-height: 1.6;
 }
 
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.8rem;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+}
+
 h1 {
   font-size: 2.3rem;
   margin-bottom: 0.5rem;
@@ -99,7 +118,6 @@ h1 {
 .subtitle {
   color: var(--text-secondary);
   font-size: 1.1rem;
-  margin-bottom: 1.8rem;
 }
 
 .section {
@@ -205,6 +223,36 @@ h2::after {
   filter: invert(var(--icon-invert));
 }
 
+.social-links a:hover img {
+  opacity: 1;
+}
+
+.resume-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 90px;
+  height: 35px;
+  background: var(--primary);
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  padding: 0 12px;
+}
+
+.resume-link:hover {
+  background: var(--secondary);
+  transform: translateY(-2px);
+}
+
+.resume-text {
+  font-weight: 600;
+}
+
 .view-all {
   color: var(--text-secondary);
   text-decoration: none;
@@ -228,6 +276,17 @@ h2::after {
 @media (max-width: 768px) {
   .container {
     padding: 1.5rem;
+  }
+
+  .header-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .resume-link {
+    align-self: flex-end;
+    margin-top: -3.5rem;
   }
 
   h1 {
