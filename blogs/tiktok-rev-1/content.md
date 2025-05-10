@@ -3,7 +3,6 @@
 #### 10/08/2023
 
 --- 
-<br >
 
 TikTok is one of the largest social media apps currently, so naturally, people were botting and scraping the platform heavily. As a counter, TikTok implemented some security measures that stopped a large amount of the botting. In this series, the goal isn’t to exploit TikTok, but instead to understand the security currently in place.
 
