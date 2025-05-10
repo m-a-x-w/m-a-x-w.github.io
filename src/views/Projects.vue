@@ -7,9 +7,25 @@
       <div class="section filters">
         <h2>Filter by Labels</h2>
         <div class="label-filters">
-          <div v-for="label in sortedLabels" :key="label.name" class="label-item">
+          <!-- Common labels shown prominently -->
+          <div v-for="label in commonLabels" :key="label.name" class="label-item">
             <input type="checkbox" :id="label.name" :value="label.name" v-model="selectedLabels" />
             <label :for="label.name">{{ label.name }} ({{ label.count }})</label>
+          </div>
+          
+          <!-- Dropdown for additional labels -->
+          <div class="more-filters" v-if="additionalLabels.length > 0">
+            <button class="dropdown-toggle" @click="showMoreFilters = !showMoreFilters">
+              More labels   {{ showMoreFilters ? ' ▼' : ' ▶' }}
+            </button>
+            <div class="dropdown-menu" v-show="showMoreFilters">
+              <div class="dropdown-grid">
+                <div v-for="label in additionalLabels" :key="label.name" class="label-item">
+                  <input type="checkbox" :id="label.name" :value="label.name" v-model="selectedLabels" />
+                  <label :for="label.name">{{ label.name }} ({{ label.count }})</label>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -40,7 +56,8 @@ export default {
   data() {
     return {
       projects: projects,
-      selectedLabels: []
+      selectedLabels: [],
+      showMoreFilters: false
     }
   },
   computed: {
@@ -58,6 +75,12 @@ export default {
     },
     sortedLabels() {
       return [...this.labels].sort((a, b) => b.count - a.count);
+    },
+    commonLabels() {
+      return this.sortedLabels.slice(0, 3); // Show top 3 most common labels
+    },
+    additionalLabels() {
+      return this.sortedLabels.slice(3); // All other labels
     },
     filteredProjects() {
       if (this.selectedLabels.length === 0) {
@@ -123,6 +146,7 @@ h2::after {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
+  align-items: start;
 }
 
 .label-item {
@@ -201,6 +225,61 @@ h2::after {
   padding: 2rem;
 }
 
+.more-filters {
+  position: relative;
+  margin-top: 0; /* Remove top margin to align with other labels */
+}
+
+.dropdown-toggle {
+  width: auto;
+  min-width: 200px;
+  text-align: left;
+  padding: 0.8rem;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.dropdown-toggle:hover {
+  border-color: var(--primary);
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: -200px; /* Make it wider */
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-top: 0.5rem;
+  padding: 1rem;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.75rem;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.dropdown-menu .label-item {
+  margin-bottom: 0.5rem;
+}
+
+.dropdown-menu .label-item:last-child {
+  margin-bottom: 0;
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 1.5rem;
@@ -212,6 +291,19 @@ h2::after {
 
   .label-filters {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .dropdown-menu {
+    position: static;
+    right: 0;
+  }
+
+  .dropdown-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .more-filters {
+    margin-top: 0; /* Ensure consistent on mobile */
   }
 }
 </style>

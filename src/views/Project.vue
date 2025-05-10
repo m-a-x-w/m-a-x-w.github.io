@@ -50,6 +50,29 @@ export default {
   margin-bottom: 40px;
 }
 
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 90px;
+  height: 35px;
+  background: var(--primary);
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  padding: 0 12px;
+  border: none;
+}
+
+button:hover {
+  background: var(--secondary);
+  transform: translateY(-2px);
+}
+
 h1 {
   font-size: 2.4em;
   margin: 0 0 30px;

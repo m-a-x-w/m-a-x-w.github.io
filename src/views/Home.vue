@@ -6,7 +6,7 @@
           <h1>Max Weinstein</h1>
           <div class="subtitle">Software Engineering & Cybersecurity</div>
         </div>
-        <a href="/MaxWeinstein_resume.pdf" target="_blank" title="Resume" class="resume-link">
+        <a href="/max_weinstein_resume.pdf" target="_blank" title="Resume" class="resume-link">
           <span class="resume-text">RESUME</span>
         </a>
       </div>

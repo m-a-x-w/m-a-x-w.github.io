@@ -5,8 +5,10 @@
       <button @click="$router.push('/blog')">Full Blog</button>
     </div>
     <h1>{{ blogPost.title }}</h1>
-    <p>{{ blogPost.date }}</p>
-    <div v-html="blogPostContent"></div>
+    <div class="blog-content">
+      <p class="post-date">{{ blogPost.date }}</p>
+      <div v-html="blogPostContent"></div>
+    </div>
   </div>
 </template>
 
@@ -64,19 +66,26 @@ export default {
 }
 
 button {
-  padding: 12px 30px;
-  font-size: 1.1em;
-  background: linear-gradient(120deg, #6d28d9, #7c3aed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 90px;
+  height: 35px;
+  background: var(--primary);
   color: white;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
   transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  padding: 0 12px;
+  border: none;
 }
 
 button:hover {
+  background: var(--secondary);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
 }
 
 h1 {
@@ -89,6 +98,20 @@ p {
   font-size: 1.1em;
   color: var(--text-secondary);
   line-height: 1.8;
+}
+
+.blog-content {
+  background-color: var(--background);
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+
+.post-date {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
 }
 
 :deep(h2) {
