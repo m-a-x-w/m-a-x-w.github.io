@@ -324,6 +324,10 @@ h1 {
     padding: 1.5rem;
   }
 
+  .content {
+    padding-top: 2rem; /* Add padding to prevent overlap with theme toggle */
+  }
+
   .filters-row {
     grid-template-columns: 1fr;
     gap: 2rem;

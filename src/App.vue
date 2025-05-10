@@ -147,7 +147,7 @@ h1, h2, h3, h4, h5, h6 {
 .theme-toggle {
   position: fixed;
   top: 1.5rem;
-  left: 1.5rem;
+  right: 1.5rem;
   padding: 0.5rem;
   width: 40px;
   height: 40px;
@@ -166,5 +166,16 @@ h1, h2, h3, h4, h5, h6 {
 .theme-toggle:hover {
   transform: rotate(15deg);
   background: var(--background);
+}
+
+@media (max-width: 768px) {
+  .theme-toggle {
+    top: 1rem;
+    right: 1rem;
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+    padding: 0.4rem;
+  }
 }
 </style>

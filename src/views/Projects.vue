@@ -231,8 +231,8 @@ h2::after {
 }
 
 .dropdown-toggle {
-  width: auto;
-  min-width: 200px;
+  width: 100%;
+  max-width: 200px;
   text-align: left;
   padding: 0.8rem;
   background: var(--background);
@@ -254,7 +254,8 @@ h2::after {
   position: absolute;
   top: 100%;
   left: 0;
-  right: -200px; /* Make it wider */
+  width: calc(100vw - 3rem); /* Set width relative to viewport with padding */
+  max-width: 500px; /* Maximum width for larger screens */
   background: var(--background);
   border: 1px solid var(--border);
   border-radius: 8px;
@@ -285,6 +286,10 @@ h2::after {
     padding: 1.5rem;
   }
 
+  .content {
+    padding-top: 2rem; /* Add padding to prevent overlap with theme toggle */
+  }
+
   .projects-grid {
     grid-template-columns: 1fr;
   }
@@ -294,8 +299,12 @@ h2::after {
   }
 
   .dropdown-menu {
-    position: static;
-    right: 0;
+    position: fixed;
+    top: auto;
+    left: 1.5rem;
+    right: 1.5rem;
+    width: auto;
+    max-width: none;
   }
 
   .dropdown-grid {
@@ -304,6 +313,12 @@ h2::after {
 
   .more-filters {
     margin-top: 0; /* Ensure consistent on mobile */
+  }
+
+  .dropdown-toggle {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
   }
 }
 </style>

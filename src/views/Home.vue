@@ -100,8 +100,10 @@ export default {
 .header-section {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 1.8rem;
+  position: relative;
+  padding-top: 0.5rem;
 }
 
 .title-container {
@@ -279,18 +281,27 @@ h2::after {
   }
 
   .header-section {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
+    padding-top: 3rem;
   }
 
-  .resume-link {
-    align-self: flex-end;
-    margin-top: -3.5rem;
+  .title-container {
+    max-width: calc(100% - 120px); /* Leave space for resume button */
   }
 
   h1 {
     font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .resume-link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 3.5rem; /* Space for theme toggle */
   }
   
   .columns {
