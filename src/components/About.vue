@@ -3,7 +3,6 @@
     <section class="intro">
       <h1>About</h1>
       <p>
-        Designer and developer interested in creating thoughtful digital experiences. 
         Currently based in DC area.
       </p>
     </section>

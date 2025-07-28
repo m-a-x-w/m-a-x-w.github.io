@@ -51,7 +51,117 @@ Create `content.md` in your project folder:
 # Your New Project
 ## Subtitle here
 
-Your project description goes here. You can use all standard markdown features:
+# Content Management System
+
+This project now uses Vue SFC (Single File Components) for content instead of Markdown files. This provides better performance, rich component capabilities, and type safety.
+
+## Adding New Content
+
+### Adding a New Blog Post
+
+1. **Create the Vue component** in `src/content/blogs/`:
+   ```vue
+   <!-- src/content/blogs/YourBlogPost.vue -->
+   <template>
+     <article class="blog-article">
+       <header class="blog-header">
+         <h1>{{ title }}</h1>
+         <time :datetime="date">{{ formattedDate }}</time>
+         <p>{{ excerpt }}</p>
+       </header>
+       <!-- Your content here -->
+     </article>
+   </template>
+   
+   <script setup>
+   // Your blog data and logic
+   </script>
+   ```
+
+2. **Register the component** in `src/content/index.js`:
+   ```javascript
+   export const blogComponents = {
+     'your-blog-slug': () => import('./blogs/YourBlogPost.vue')
+   }
+   ```
+
+3. **Add to blog data** in `src/data/blogs.js`:
+   ```javascript
+   {
+     id: 2,
+     title: 'Your Blog Title',
+     date: '2025-01-15',
+     slug: 'your-blog-slug',
+     excerpt: 'Brief description...',
+     component: getBlogComponent('your-blog-slug')
+   }
+   ```
+
+### Adding a New Project
+
+1. **Create the Vue component** in `src/content/projects/`:
+   ```vue
+   <!-- src/content/projects/YourProject.vue -->
+   <template>
+     <article class="project-article">
+       <!-- Your project content -->
+       <ProjectDemo 
+         title="Demo Title"
+         :tech="techStack"
+         github-url="https://github.com/..."
+       />
+     </article>
+   </template>
+   ```
+
+2. **Register and add to data** following the same pattern as blogs.
+
+## Available Components
+
+### Shared Components
+- `CodeBlock` - Syntax highlighted code blocks
+- `ImageGallery` - Responsive image galleries with lightbox
+- `ProjectDemo` - Project demonstration containers
+
+### Usage Examples
+
+```vue
+<CodeBlock 
+  language="javascript"
+  title="Example Code"
+  :code="codeString"
+/>
+
+<ImageGallery 
+  :images="[{src: 'path.jpg', alt: 'Description', caption: 'Caption'}]"
+  :columns="2"
+/>
+
+<ProjectDemo 
+  title="Live Demo"
+  :tech="['Vue.js', 'Node.js']"
+  live-url="https://demo.com"
+  github-url="https://github.com/..."
+>
+  <p>Demo description content</p>
+</ProjectDemo>
+```
+
+## Benefits of This System
+
+- **Performance**: Components are compiled and optimized
+- **Rich Content**: Custom Vue components for interactive elements
+- **Type Safety**: Can gradually add TypeScript
+- **Maintainability**: Everything in the Vue ecosystem
+- **SEO**: Still generates static HTML
+- **Development**: Hot reload, component development tools
+
+## Migration Notes
+
+- Removed `marked` dependency
+- Old markdown files are preserved but no longer used
+- Content is now defined directly in Vue components
+- Styling is scoped and component-based
 
 - Lists
 - **Bold text**

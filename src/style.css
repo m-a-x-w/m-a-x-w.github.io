@@ -13,7 +13,7 @@
   --font-size-base: 15px;
   --font-size-small: 13px;
   --line-height: 1.5;
-  --max-width: 520px;
+  --max-width: 720px;
   --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-md: 16px;
@@ -262,6 +262,9 @@ main {
 .song-line {
   font-weight: 400;
   color: var(--color-text);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
 .song-artist {
@@ -274,6 +277,9 @@ main {
 .experience-line {
   font-weight: 400;
   color: var(--color-text);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
 .experience-line.current {
@@ -284,6 +290,7 @@ main {
   color: var(--color-text-secondary);
   font-weight: 300;
   margin-left: 8px;
+  font-size: var(--font-size-base);
 }
 
 /* Project Detail Page */
@@ -420,4 +427,25 @@ main {
     text-align: left;
     padding-top: 0;
   }
+}
+
+/* Resume Button */
+.resume-button {
+  display: inline-block;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--color-accent);
+  color: white !important;
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: var(--font-size-small);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.2s ease;
+  border-bottom: none !important;
+}
+
+.resume-button:hover {
+  background-color: #0052a3;
+  transform: translateY(-1px);
+  border-bottom: none !important;
 }

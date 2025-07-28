@@ -2,60 +2,62 @@
   <div class="blog-detail-page">
     <div class="content-container">
       <button @click="goBack" class="back-button">← Back to Blog</button>
-      <div v-if="content" v-html="content" class="blog-content"></div>
-      <div v-else class="loading">Loading...</div>
+      <component 
+        v-if="BlogComponent" 
+        :is="BlogComponent" 
+        class="blog-content"
+      />
+      <div v-else-if="loading" class="loading">Loading...</div>
+      <div v-else class="error">Blog post not found.</div>
     </div>
   </div>
 </template>
 
 <script>
-import { marked } from 'marked'
+import { ref, onMounted, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { blogPosts } from '../data/blogs'
-
-// Configure marked options
-marked.setOptions({
-  breaks: true,
-  gfm: true,
-  headerIds: false,
-  mangle: false
-})
 
 export default {
   name: 'BlogDetail',
-  data() {
-    return {
-      content: null,
-      blog: null
-    }
-  },
-  async mounted() {
-    await this.loadBlogContent()
-  },
-  methods: {
-    async loadBlogContent() {
-      const slug = this.$route.params.slug
-      this.blog = blogPosts.find(b => b.slug === slug)
+  setup() {
+    const route = useRoute()
+    const router = useRouter()
+    const BlogComponent = ref(null)
+    const loading = ref(true)
+
+    const loadBlogContent = async () => {
+      loading.value = true
+      const slug = route.params.slug
+      const blog = blogPosts.find(b => b.slug === slug)
       
-      if (this.blog && this.blog.contentPath) {
+      if (blog && blog.component) {
         try {
-          const response = await fetch(this.blog.contentPath)
-          const markdown = await response.text()
-          this.content = marked(markdown)
+          const componentModule = await blog.component()
+          BlogComponent.value = componentModule.default
         } catch (error) {
-          console.error('Error loading blog content:', error)
-          this.content = '<p>Failed to load blog content.</p>'
+          console.error('Error loading blog component:', error)
+          BlogComponent.value = null
         }
       } else {
-        this.content = '<p>Blog post not found.</p>'
+        BlogComponent.value = null
       }
-    },
-    goBack() {
-      this.$router.push('/blog')
+      
+      loading.value = false
     }
-  },
-  watch: {
-    '$route'() {
-      this.loadBlogContent()
+
+    const goBack = () => {
+      router.push('/blog')
+    }
+
+    onMounted(loadBlogContent)
+    
+    watch(() => route.params.slug, loadBlogContent)
+
+    return {
+      BlogComponent,
+      loading,
+      goBack
     }
   }
 }

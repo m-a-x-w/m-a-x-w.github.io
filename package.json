@@ -9,7 +9,6 @@
     "deploy": "git add . && git commit -m \"Deploy update\" && git push origin master"
   },
   "dependencies": {
-    "marked": "^16.1.1",
     "vue": "^3.4.0",
     "vue-router": "^4.2.0"
   },

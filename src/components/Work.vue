@@ -17,6 +17,10 @@
         </li>
       </ul>
     </section>
+
+    <section class="section">
+      <a href="/resume.pdf" target="_blank" class="resume-button">View Resume</a>
+    </section>
   </div>
 </template>
 

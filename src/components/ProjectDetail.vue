@@ -4,8 +4,8 @@
       <h1>Loading...</h1>
     </section>
   </div>
-  <div v-else-if="content">
-    <div v-html="content" class="project-content"></div>
+  <div v-else-if="ProjectComponent">
+    <component :is="ProjectComponent" class="project-content" />
     <section class="contact">
       <router-link to="/">← Back to Home</router-link>
     </section>
@@ -22,53 +22,50 @@
 </template>
 
 <script>
-import { marked } from 'marked'
+import { ref, onMounted, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import { projects } from '../data/projects.js'
 
 export default {
   name: 'ProjectDetail',
-  data() {
-    return {
-      content: null,
-      loading: true
-    }
-  },
-  async mounted() {
-    await this.loadContent()
-  },
-  async beforeRouteUpdate(to, from, next) {
-    this.loading = true
-    await this.loadContent()
-    next()
-  },
-  methods: {
-    async loadContent() {
+  setup() {
+    const route = useRoute()
+    const ProjectComponent = ref(null)
+    const loading = ref(true)
+
+    const loadContent = async () => {
+      loading.value = true
       try {
-        const slug = this.$route.params.slug
+        const slug = route.params.slug
         const project = projects.find(p => p.route === `/projects/${slug}`)
         
-        if (project && project.contentPath) {
-          // Import the markdown content
-          const response = await fetch(`/src/content/projects/${project.contentPath}/content.md`)
-          const markdown = await response.text()
-          
-          // Configure marked for better HTML output
-          marked.setOptions({
-            breaks: true,
-            gfm: true
-          })
-          
-          this.content = marked(markdown)
+        if (project && project.component) {
+          const componentModule = await project.component()
+          ProjectComponent.value = componentModule.default
         } else {
-          this.content = null
+          ProjectComponent.value = null
         }
       } catch (error) {
         console.error('Failed to load project content:', error)
-        this.content = null
+        ProjectComponent.value = null
       } finally {
-        this.loading = false
+        loading.value = false
       }
+    }
+
+    onMounted(loadContent)
+    watch(() => route.params.slug, loadContent)
+
+    return {
+      ProjectComponent,
+      loading
     }
   }
 }
 </script>
+
+<style scoped>
+.contact {
+  padding-bottom: 3rem;
+}
+</style>
