@@ -24,7 +24,7 @@ export default {
   name: 'Blog',
   computed: {
     sortedPosts() {
-      return [...blogPosts].sort((a, b) => new Date(b.date) - new Date(a.date))
+      return [...blogPosts].sort((a, b) => new Date(a.date) - new Date(b.date))
     }
   },
   methods: {

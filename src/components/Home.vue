@@ -3,7 +3,7 @@
     <section class="intro">
       <h1>Hi, my name is Max Weinstein.</h1>
       <p>
-        I'm currently self-employed, working on various projects. I'm interested in design, technology, and creating meaningful digital experiences.
+        Computer Science student at Purdue University specializing in reverse engineering and applied machine learning. Building secure, intelligent systems.
       </p>
     </section>
 

@@ -12,6 +12,14 @@
 import { marked } from 'marked'
 import { blogPosts } from '../data/blogs'
 
+// Configure marked options
+marked.setOptions({
+  breaks: true,
+  gfm: true,
+  headerIds: false,
+  mangle: false
+})
+
 export default {
   name: 'BlogDetail',
   data() {
@@ -70,8 +78,8 @@ export default {
   color: var(--color-text-secondary);
   font-size: var(--font-size-sm);
   cursor: pointer;
-  margin-bottom: var(--space-lg);
-  padding: var(--space-xs) 0;
+  margin-top: var(--space-lg);
+  margin-bottom: 5%;
   transition: color 0.2s ease;
 }
 
@@ -123,30 +131,58 @@ export default {
   padding-left: var(--space-lg);
 }
 
+.blog-content :deep(ul) {
+  list-style-type: disc;
+  list-style-position: inside;
+}
+
+.blog-content :deep(ol) {
+  list-style-type: decimal;
+  list-style-position: inside;
+}
+
+.blog-content :deep(ul li) {
+  margin-bottom: var(--space-xs);
+  color: var(--color-text-primary);
+  text-indent: -1em;
+  padding-left: 1em;
+}
+
+.blog-content :deep(ol li) {
+  margin-bottom: var(--space-xs);
+  color: var(--color-text-primary);
+  text-indent: -1.5em;
+  padding-left: 1.5em;
+}
+
 .blog-content :deep(li) {
   margin-bottom: var(--space-xs);
   color: var(--color-text-primary);
 }
 
 .blog-content :deep(code) {
-  background-color: var(--color-bg-secondary);
-  padding: 2px 4px;
-  border-radius: 2px;
+  background-color: #f8f9fa;
+  padding: 2px 6px;
+  border-radius: 4px;
   font-size: var(--font-size-sm);
   font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  color: #2d3748;
 }
 
 .blog-content :deep(pre) {
-  background-color: var(--color-bg-secondary);
-  padding: var(--space-md);
-  border-radius: 4px;
+  background-color: #f8f9fa;
+  padding: var(--space-lg);
+  border-radius: 8px;
   overflow-x: auto;
-  margin-bottom: var(--space-md);
+  margin: var(--space-lg) 0;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .blog-content :deep(pre code) {
   background: none;
   padding: 0;
+  color: #2d3748;
 }
 
 .blog-content :deep(blockquote) {
