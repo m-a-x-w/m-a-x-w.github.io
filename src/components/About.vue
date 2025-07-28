@@ -12,23 +12,28 @@
       <h2>Songs to Listen To</h2>
       <ul class="reading-list">
         <li class="reading-item">
-          <div class="song-line">"Siegfried" <span class="song-artist">Frank Ocean</span></div>
+          <div class="song-line">
+            <a href="https://open.spotify.com/track/1BViPjTT585XAhkUUrkts0" target="_blank">Siegfried</a> 
+            <span class="song-artist">Frank Ocean</span>
+          </div>
         </li>
         <li class="reading-item">
-          <div class="song-line">"Goldie" <span class="song-artist">A$AP Rocky</span></div>
+          <div class="song-line">
+            <a href="https://open.spotify.com/track/3VpdIi5XK2m8AaCXSVW320" target="_blank">Goldie</a> 
+            <span class="song-artist">A$AP Rocky</span>
+          </div>
         </li>
         <li class="reading-item">
-          <div class="song-line">"I Remember Everything" <span class="song-artist">Zach Bryan ft. Kacey Musgraves</span></div>
+          <div class="song-line">
+            <a href="https://open.spotify.com/track/4KULAymBBJcPRpk1yO4dOG" target="_blank">I Remember Everything</a> 
+            <span class="song-artist">Zach Bryan ft. Kacey Musgraves</span>
+          </div>
         </li>
       </ul>
     </section>
 
     <section class="contact">
-      <p>
-        <a href="mailto:maxweinstein@proton.me">Email</a> • 
-        <a href="https://www.linkedin.com/in/max-weinstein-04a68423b/" target="_blank">LinkedIn</a> • 
-        <a href="https://github.com/m-a-x-w" target="_blank">GitHub</a>
-      </p>
+      <p>Feel free to reach out at <a href="mailto:maxweinstein@proton.me">maxweinstein@proton.me</a></p>
     </section>
   </div>
 </template>

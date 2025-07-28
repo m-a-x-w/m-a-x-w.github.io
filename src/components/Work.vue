@@ -1,10 +1,5 @@
 <template>
   <div>
-    <section class="intro">
-      <h1>Work</h1>
-      <p>Professional experience and career history.</p>
-    </section>
-
     <section class="section">
       <h2>Experience</h2>
       <ul class="reading-list">

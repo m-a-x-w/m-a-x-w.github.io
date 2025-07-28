@@ -25,7 +25,11 @@
     </section>
 
     <section class="contact">
-      <p>Feel free to reach out at <a href="mailto:maxweinstein@proton.me">maxweinstein@proton.me</a></p>
+      <p>
+        <a href="mailto:maxweinstein@proton.me">Email</a> • 
+        <a href="https://www.linkedin.com/in/max-weinstein-04a68423b/" target="_blank">LinkedIn</a> • 
+        <a href="https://github.com/m-a-x-w" target="_blank">GitHub</a>
+      </p>
     </section>
   </div>
 </template>
