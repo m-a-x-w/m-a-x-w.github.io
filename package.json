@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "git add . && git commit -m \"Deploy update\" && git push origin master"
   },
   "dependencies": {
     "marked": "^16.1.1",
