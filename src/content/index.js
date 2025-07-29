@@ -3,7 +3,8 @@ export const blogComponents = {
 
 export const projectComponents = {
   'partipix': () => import('./projects/partipix/Partipix.vue'),
-  'wetrade': () => import('./projects/wetrade/WeTrade.vue')
+  'wetrade': () => import('./projects/wetrade/WeTrade.vue'),
+  'hudglasses': () => import('./projects/hudglasses/HudGlasses.vue')
 }
 
 export const getBlogComponent = (slug) => {

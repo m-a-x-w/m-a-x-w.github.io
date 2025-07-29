@@ -19,4 +19,13 @@ export const projects = [
     hasPage: true,
     component: getProjectComponent('wetrade')
   },
+  {
+    id: 3,
+    name: 'Auditory In-sights', 
+    tech: 'Accessible glasses to support hard of hearing users',
+    link: null,
+    route: '/projects/auditory-insights',
+    hasPage: true,
+    component: getProjectComponent('hudglasses')
+  },
 ]
