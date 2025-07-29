@@ -23,4 +23,11 @@ const router = createRouter({
   routes
 })
 
+// Handle redirects from 404.html
+const redirect = sessionStorage.getItem('redirect');
+if (redirect) {
+  sessionStorage.removeItem('redirect');
+  router.push(redirect);
+}
+
 createApp(App).use(router).mount('#app')
