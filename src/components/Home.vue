@@ -3,7 +3,7 @@
     <section class="intro">
       <h1>Hi, my name is Max Weinstein.</h1>
       <p>
-        CS @ Purdue | Reverse Engineering | Machine Learning
+        CS @ Purdue | Reverse Engineering | ML
       </p>
     </section>
 

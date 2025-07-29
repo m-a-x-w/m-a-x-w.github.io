@@ -10,4 +10,13 @@ export const projects = [
     hasPage: true,
     component: getProjectComponent('partipix')
   },
+  {
+    id: 2,
+    name: 'WeTrade', 
+    tech: 'Intelligent trading platform based on real-world sentiment',
+    link: null,
+    route: '/projects/wetrade',
+    hasPage: true,
+    component: getProjectComponent('wetrade')
+  },
 ]

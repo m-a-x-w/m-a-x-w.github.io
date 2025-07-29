@@ -8,7 +8,7 @@
     </section>
 
     <section class="section">
-      <h2>Songs to Listen To</h2>
+      <h2>Songs I Recommend</h2>
       <ul class="reading-list">
         <li class="reading-item">
           <div class="song-line">
