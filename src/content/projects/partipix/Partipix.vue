@@ -48,16 +48,16 @@ const screenshots = [
     alt: 'Partipix Main Page'
   },
   {
-    src: '/images/partipix/dashboard.jpg',
-    alt: 'Partipix Dashboard - Event management interface'
+    src: '/images/partipix/2.png',
+    alt: ''
   },
   {
-    src: '/images/partipix/upload.jpg',
-    alt: 'Photo upload interface with privacy controls'
+    src: '/images/partipix/3.png',
+    alt: ''
   },
   {
-    src: '/images/partipix/gallery.jpg',
-    alt: 'Event photo gallery with facial recognition'
+    src: '/images/partipix/4.png',
+    alt: ''
   },
 ]
 </script>
