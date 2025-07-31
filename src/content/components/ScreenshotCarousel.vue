@@ -55,14 +55,13 @@ onUnmounted(() => {
   position: relative;
   border-radius: 8px;
   overflow: hidden;
-  background: #f6f8fa;
 }
 
 .screenshot-container {
   position: relative;
   width: 100%;
-  min-height: 300px;
-  max-height: 600px;
+  min-height: 500px;
+  max-height: 800px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,6 +80,9 @@ onUnmounted(() => {
   object-fit: contain;
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .screenshot.active {
