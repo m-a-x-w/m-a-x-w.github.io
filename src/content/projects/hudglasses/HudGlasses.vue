@@ -8,10 +8,10 @@
     <div class="project-content">
       <section class="project-overview">
         <h2>Overview</h2>
-        <p>Event-based photo sharing platform with facial recognition and intelligent privacy controls for seamless collaboration.</p>
+        <p>A wearable heads-up display system that provides real-time visual cues for spatial audio to assist individuals who are deaf or hard of hearing. The system integrates directional microphones, computer vision, and machine learning to detect, localize, and classify nearby sounds, translating them into intuitive visual overlays on transparent lenses.</p>
         
         <div class="project-links">
-          <a href="https://github.com/m-a-x-w/partipix" target="_blank" class="github-link">
+          <a href="#" target="_blank" class="github-link">
             View on GitHub →
           </a>
         </div>
@@ -24,13 +24,20 @@
       <section class="project-features">
         <h2>Key Features</h2>
         <ul>
-          <li>Event creation and participant management</li>
-          <li>Facial recognition for automatic photo categorization</li>
-          <li>Privacy-first photo sharing with blacklist controls</li>
-          <li>Google authentication and secure cloud storage</li>
-          <li>Real-time upload status tracking</li>
-          <li>Mobile-responsive design</li>
+          <li>Real-time spatial audio detection and localization</li>
+          <li>Machine learning-based sound classification (speech, sirens, vehicles, doorbells)</li>
+          <li>Directional visual cues projected onto transparent lenses</li>
+          <li>Embedded signal processing with sub-100ms latency</li>
+          <li>Lightweight wearable design with 3D-printed housing</li>
+          <li>On-device inference using Raspberry Pi Zero or ESP32</li>
+          <li>Custom PCB with directional microphone array</li>
+          <li>Transparent OLED or waveguide optics for AR overlay</li>
         </ul>
+      </section>
+
+      <section class="project-technical">
+        <h2>Technical Implementation</h2>
+        <p>Built with a directional microphone array, embedded signal processing, and machine learning models for real-time sound classification and localization. Uses Raspberry Pi Zero or ESP32 for on-device inference with transparent OLED displays for visual overlay.</p>
       </section>
     </div>
   </article>
@@ -39,13 +46,13 @@
 <script setup>
 import ScreenshotCarousel from '../../components/ScreenshotCarousel.vue'
 
-const title = "Partipix"
-const tagline = "Event-based photo sharing with intelligent privacy controls"
+const title = "Auditory In-Sights"
+const tagline = "Real-time spatial audio visualization for the deaf and hard of hearing"
 
 const screenshots = [
   {
-    src: '/images/partipix/main.png',
-    alt: 'Partipix Main Page'
+    src: '/images/hudglasses/main.png',
+    alt: 'Auditory In-Sights Main Display'
   },
 ]
 </script>
