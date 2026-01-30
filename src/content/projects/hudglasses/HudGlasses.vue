@@ -8,7 +8,10 @@
     <div class="project-content">
       <section class="project-overview">
         <h2>Overview</h2>
-        <p>A wearable heads-up display system that provides real-time visual cues for spatial audio to assist individuals who are deaf or hard of hearing. The system integrates directional microphones, computer vision, and machine learning to detect, localize, and classify nearby sounds, translating them into intuitive visual overlays on transparent lenses.</p>
+        <p>
+          Wearable HUD glasses that turn nearby sounds into simple visual direction cues for deaf and hard of
+          hearing users.
+        </p>
         
         <div class="project-links">
           <a href="#" target="_blank" class="github-link">
@@ -24,20 +27,22 @@
       <section class="project-features">
         <h2>Key Features</h2>
         <ul>
-          <li>Real-time spatial audio detection and localization</li>
-          <li>Machine learning-based sound classification (speech, sirens, vehicles, doorbells)</li>
-          <li>Directional visual cues projected onto transparent lenses</li>
-          <li>Embedded signal processing with sub-100ms latency</li>
-          <li>Lightweight wearable design with 3D-printed housing</li>
-          <li>On-device inference using Raspberry Pi Zero or ESP32</li>
-          <li>Custom PCB with directional microphone array</li>
-          <li>Transparent OLED or waveguide optics for AR overlay</li>
+          <li>Real-time sound direction cues</li>
+          <li>On-device sound classification (speech, sirens, vehicles)</li>
+          <li>Low-latency embedded processing</li>
+          <li>Lightweight, wearable housing</li>
+          <li>Runs on Raspberry Pi Zero or ESP32</li>
+          <li>Directional mic array + custom PCB</li>
+          <li>Transparent display for overlay</li>
         </ul>
       </section>
 
       <section class="project-technical">
         <h2>Technical Implementation</h2>
-        <p>Built with a directional microphone array, embedded signal processing, and machine learning models for real-time sound classification and localization. Uses Raspberry Pi Zero or ESP32 for on-device inference with transparent OLED displays for visual overlay.</p>
+        <p>
+          Mic array + embedded DSP + ML inference on-device. A transparent display overlays direction cues in
+          real time.
+        </p>
       </section>
     </div>
   </article>

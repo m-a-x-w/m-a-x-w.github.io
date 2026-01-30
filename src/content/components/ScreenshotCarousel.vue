@@ -10,7 +10,7 @@
         class="screenshot"
       />
     </div>
-    <div class="screenshot-dots">
+    <div v-if="screenshots.length > 1" class="screenshot-dots">
       <button 
         v-for="(screenshot, index) in screenshots"
         :key="index"
@@ -40,6 +40,8 @@ const currentScreenshot = ref(0)
 
 let interval
 onMounted(() => {
+  if (!props.screenshots || props.screenshots.length <= 1) return
+
   interval = setInterval(() => {
     currentScreenshot.value = (currentScreenshot.value + 1) % props.screenshots.length
   }, props.autoRotateInterval)
@@ -60,8 +62,9 @@ onUnmounted(() => {
 .screenshot-container {
   position: relative;
   width: 100%;
-  min-height: 500px;
-  max-height: 800px;
+  /* Reduce empty space for smaller screenshots while staying roomy for tall ones */
+  min-height: clamp(240px, 42vw, 520px);
+  max-height: 75vh;
   display: flex;
   align-items: center;
   justify-content: center;

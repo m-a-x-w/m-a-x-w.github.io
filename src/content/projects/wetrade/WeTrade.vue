@@ -8,9 +8,9 @@
     <div class="project-content">
       <section class="project-overview">
         <h2>Overview</h2>
-        <p>WeTrade is an AI-powered trading bot that makes stock investing accessible to everyone. It uses machine learning to analyze market trends, news sentiment, and technical indicators to make smart trading decisions automatically.</p>
+        <p>Stock trading bot that uses ML on price data and news sentiment to place trades.</p>
         
-        <p>In testing, our system achieved 62% accuracy in predicting stock price movements and earned a 4% return in its first week of live trading.</p>
+        <p>In testing, it hit 62% directional accuracy and returned 4% in its first week of live trading.</p>
         
         <div class="project-links">
           <a href="https://github.com/senior-research/snr-research-final" target="_blank" class="github-link">
@@ -26,13 +26,13 @@
       <section class="project-features">
         <h2>How It Works</h2>
         <ul>
-          <li>Scraped 4+ million news articles from Yahoo Finance's archive dating back to 2012</li>
-          <li>Built custom scraping infrastructure using IPv6 proxy networks to bypass rate limits</li>
-          <li>Processes 50,000+ news articles per minute for real-time sentiment analysis</li>
+          <li>Scraped 4M+ Yahoo Finance articles (back to 2012)</li>
+          <li>Custom scraping with IPv6 proxies to bypass rate limits</li>
+          <li>Processes 50k+ articles/min for real-time sentiment</li>
           <li>Combines news sentiment with technical indicators (MACD, RSI, moving averages)</li>
-          <li>Neural networks learn patterns from years of historical stock data</li>
-          <li>Makes automated buy/sell decisions based on AI predictions and news sentiment</li>
-          <li>Tracks performance and logs all trading decisions with full transparency</li>
+          <li>Trains on years of historical stock data</li>
+          <li>Places automated buy/sell orders</li>
+          <li>Logs every decision and tracks performance</li>
         </ul>
       </section>
     </div>
