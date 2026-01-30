@@ -23,11 +23,16 @@ const router = createRouter({
   routes
 })
 
-// Handle redirects from 404.html
-const redirect = sessionStorage.getItem('redirect');
+// Handle redirects from 404.html (no storage; uses a query param instead)
+const params = new URLSearchParams(window.location.search)
+const redirect = params.get('redirect')
 if (redirect) {
-  sessionStorage.removeItem('redirect');
-  router.push(redirect);
+  params.delete('redirect')
+  const remaining = params.toString()
+  const cleanedUrl =
+    window.location.pathname + (remaining ? `?${remaining}` : '') + window.location.hash
+  window.history.replaceState({}, '', cleanedUrl)
+  router.push(redirect)
 }
 
 createApp(App).use(router).mount('#app')

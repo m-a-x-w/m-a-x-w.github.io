@@ -4,7 +4,7 @@ export const projects = [
   {
     id: 1,
     name: 'partipix', 
-    tech: 'Auto-filtered photo sharing for privacy',
+    tech: 'Privacy-first event photo sharing',
     link: null,
     route: '/projects/partipix',
     hasPage: true,
@@ -13,7 +13,7 @@ export const projects = [
   {
     id: 2,
     name: 'WeTrade', 
-    tech: 'Intelligent trading platform based on real-world sentiment',
+    tech: 'ML trading bot using news + price signals',
     link: null,
     route: '/projects/wetrade',
     hasPage: true,
@@ -22,10 +22,19 @@ export const projects = [
   {
     id: 3,
     name: 'Auditory In-sights', 
-    tech: 'Accessible glasses to support hard of hearing users',
+    tech: 'HUD glasses for spatial audio cues',
     link: null,
     route: '/projects/auditory-insights',
     hasPage: true,
     component: getProjectComponent('hudglasses')
+  },
+  {
+    id: 4,
+    name: 'KalshiMarket',
+    tech: 'Low-latency arb execution with risk controls',
+    link: null,
+    route: '/projects/prediction-arb',
+    hasPage: true,
+    component: getProjectComponent('prediction-arb')
   },
 ]

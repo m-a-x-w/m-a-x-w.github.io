@@ -8,7 +8,7 @@
     <div class="project-content">
       <section class="project-overview">
         <h2>Overview</h2>
-        <p>Event-based photo sharing platform with facial recognition and intelligent privacy controls for seamless collaboration.</p>
+        <p>Event photo sharing with face recognition and simple privacy controls.</p>
         
         <div class="project-links">
           <a href="https://github.com/m-a-x-w/partipix" target="_blank" class="github-link">
@@ -24,12 +24,12 @@
       <section class="project-features">
         <h2>Key Features</h2>
         <ul>
-          <li>Event creation and participant management</li>
-          <li>Facial recognition for automatic photo categorization</li>
-          <li>Privacy-first photo sharing with blacklist controls</li>
-          <li>Google authentication and secure cloud storage</li>
-          <li>Real-time upload status tracking</li>
-          <li>Mobile-responsive design</li>
+          <li>Create events and manage participants</li>
+          <li>Auto-group photos by face</li>
+          <li>Privacy controls (blacklists)</li>
+          <li>Google sign-in</li>
+          <li>Upload progress</li>
+          <li>Mobile-friendly UI</li>
         </ul>
       </section>
     </div>
@@ -40,7 +40,7 @@
 import ScreenshotCarousel from '../../components/ScreenshotCarousel.vue'
 
 const title = "Partipix"
-const tagline = "Event-based photo sharing with intelligent privacy controls"
+const tagline = "Event photo sharing with simple privacy controls"
 
 const screenshots = [
   {
