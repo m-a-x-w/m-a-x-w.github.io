@@ -61,4 +61,3 @@ Face match bounding boxes are rendered as overlays on each photo, tagged with th
 
 <img src="/projects/partipix/landing.png">
 <img src="/projects/partipix/bounding.png">
-
