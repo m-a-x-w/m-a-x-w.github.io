@@ -43,7 +43,11 @@
 	}
 
 	header {
-		margin-bottom: 2.5rem;
+		margin-bottom: 1.75rem;
+	}
+
+	header h1 {
+		margin-bottom: 0.3rem;
 	}
 
 	time {

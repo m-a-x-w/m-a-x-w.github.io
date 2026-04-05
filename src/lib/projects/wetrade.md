@@ -16,7 +16,7 @@ So instead of using only technical data, this system combined:
 - Historical price data
 - Technical indicators
 
-The goal wasn’t long-term investing. It was short-term edge when narrative momentum and technical momentum aligned.
+The goal wasn't long-term investing. It was short-term edge when narrative momentum and technical momentum aligned.
 
 ---
 

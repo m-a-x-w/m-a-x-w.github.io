@@ -87,7 +87,11 @@
 	}
 
 	header {
-		margin-bottom: 2rem;
+		margin-bottom: 1rem;
+	}
+
+	header h1 {
+		margin-bottom: 0.25rem;
 	}
 
 	.desc {
