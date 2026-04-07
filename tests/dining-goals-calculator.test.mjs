@@ -15,6 +15,10 @@ async function importTypeScriptModule(path) {
 	return import(`data:text/javascript;base64,${encoded}`);
 }
 
+function macroCalories(target) {
+	return target.protein * 4 + target.carbs * 4 + target.fat * 9;
+}
+
 test('calculateDiningGoalTargets returns daily and per-meal values', async () => {
 	const module = await importTypeScriptModule(
 		new URL('../src/lib/dining/goals-calculator.ts', import.meta.url)
@@ -35,7 +39,7 @@ test('calculateDiningGoalTargets returns daily and per-meal values', async () =>
 		daily: {
 			calories: 2858,
 			protein: 144,
-			carbs: 393,
+			carbs: 392,
 			fat: 79
 		},
 		perMeal: {
@@ -45,6 +49,8 @@ test('calculateDiningGoalTargets returns daily and per-meal values', async () =>
 			fat: 20
 		}
 	});
+
+	assert.ok(macroCalories(result.daily) <= result.daily.calories);
 });
 
 test('calculateDiningGoalTargets clamps impossible carb allocations', async () => {
@@ -67,7 +73,7 @@ test('calculateDiningGoalTargets clamps impossible carb allocations', async () =
 		daily: {
 			calories: 220,
 			protein: 50,
-			carbs: 1,
+			carbs: 0,
 			fat: 2
 		},
 		perMeal: {
@@ -77,4 +83,6 @@ test('calculateDiningGoalTargets clamps impossible carb allocations', async () =
 			fat: 1
 		}
 	});
+
+	assert.ok(macroCalories(result.daily) <= result.daily.calories);
 });
