@@ -61,9 +61,21 @@ function nonNegativeFiniteNumber(value: number, fallback = 0): number {
 	return Math.max(0, finiteNumber(value, fallback));
 }
 
+function sanitizeSex(value: DiningGoalsCalculatorSex): DiningGoalsCalculatorSex {
+	return value === 'female' ? 'female' : 'male';
+}
+
+function sanitizeActivityLevel(
+	value: DiningGoalsCalculatorActivity
+): DiningGoalsCalculatorActivity {
+	return value in ACTIVITY_MULTIPLIERS ? value : 'moderate';
+}
+
 export function calculateDiningGoalTargets(
 	input: DiningGoalsCalculatorInput
 ): DiningGoalsCalculatorOutput {
+	const sex = sanitizeSex(input.sex);
+	const activityLevel = sanitizeActivityLevel(input.activityLevel);
 	const age = nonNegativeFiniteNumber(input.age);
 	const heightFeet = nonNegativeFiniteNumber(input.heightFeet);
 	const heightInches = nonNegativeFiniteNumber(input.heightInches);
@@ -72,9 +84,9 @@ export function calculateDiningGoalTargets(
 	const proteinPerPound = Math.max(0.01, finiteNumber(input.proteinPerPound));
 	const weightKilograms = poundsToKilograms(weightPounds);
 	const heightCentimeters = inchesToCentimeters(heightFeet, heightInches);
-	const sexOffset = input.sex === 'male' ? 5 : -161;
+	const sexOffset = sex === 'male' ? 5 : -161;
 	const bmr = 10 * weightKilograms + 6.25 * heightCentimeters - 5 * age + sexOffset;
-	const dailyCalories = roundWhole(bmr * ACTIVITY_MULTIPLIERS[input.activityLevel]);
+	const dailyCalories = roundWhole(bmr * ACTIVITY_MULTIPLIERS[activityLevel]);
 	const requestedProtein = roundWhole(weightPounds * proteinPerPound);
 	const dailyProtein = Math.min(requestedProtein, Math.floor(dailyCalories / 4));
 	const proteinCalories = dailyProtein * 4;

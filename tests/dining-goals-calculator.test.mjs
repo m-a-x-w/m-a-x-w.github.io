@@ -128,3 +128,42 @@ test('calculateDiningGoalTargets sanitizes non-finite numeric inputs', async () 
 	assert.ok(Number.isFinite(result.perMeal.fat));
 	assert.ok(macroCalories(result.daily) <= result.daily.calories);
 });
+
+test('calculateDiningGoalTargets falls back from invalid enum inputs', async () => {
+	const module = await importTypeScriptModule(
+		new URL('../src/lib/dining/goals-calculator.ts', import.meta.url)
+	);
+
+	const valid = module.calculateDiningGoalTargets({
+		sex: 'male',
+		age: 25,
+		heightFeet: 5,
+		heightInches: 10,
+		weightPounds: 150,
+		activityLevel: 'moderate',
+		mealsPerDay: 3,
+		proteinPerPound: 1.2
+	});
+
+	const invalid = module.calculateDiningGoalTargets({
+		sex: 'unknown',
+		age: 25,
+		heightFeet: 5,
+		heightInches: 10,
+		weightPounds: 150,
+		activityLevel: 'wild',
+		mealsPerDay: 3,
+		proteinPerPound: 1.2
+	});
+
+	assert.deepEqual(invalid, valid);
+	assert.ok(Number.isFinite(invalid.daily.calories));
+	assert.ok(Number.isFinite(invalid.daily.protein));
+	assert.ok(Number.isFinite(invalid.daily.carbs));
+	assert.ok(Number.isFinite(invalid.daily.fat));
+	assert.ok(Number.isFinite(invalid.perMeal.calories));
+	assert.ok(Number.isFinite(invalid.perMeal.protein));
+	assert.ok(Number.isFinite(invalid.perMeal.carbs));
+	assert.ok(Number.isFinite(invalid.perMeal.fat));
+	assert.ok(macroCalories(invalid.daily) <= invalid.daily.calories);
+});
