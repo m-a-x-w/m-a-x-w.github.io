@@ -53,16 +53,23 @@ function poundsToKilograms(pounds: number): number {
 	return pounds * 0.45359237;
 }
 
+function finiteNumber(value: number, fallback = 0): number {
+	return Number.isFinite(value) ? value : fallback;
+}
+
 export function calculateDiningGoalTargets(
 	input: DiningGoalsCalculatorInput
 ): DiningGoalsCalculatorOutput {
-	const mealsPerDay = Math.max(1, Math.round(input.mealsPerDay));
-	const proteinPerPound = Math.max(0.01, input.proteinPerPound);
-	const weightPounds = Math.max(0, input.weightPounds);
+	const age = finiteNumber(input.age);
+	const heightFeet = finiteNumber(input.heightFeet);
+	const heightInches = finiteNumber(input.heightInches);
+	const weightPounds = finiteNumber(input.weightPounds);
+	const mealsPerDay = Math.max(1, Math.round(finiteNumber(input.mealsPerDay)));
+	const proteinPerPound = Math.max(0.01, finiteNumber(input.proteinPerPound));
 	const weightKilograms = poundsToKilograms(weightPounds);
-	const heightCentimeters = inchesToCentimeters(input.heightFeet, input.heightInches);
+	const heightCentimeters = inchesToCentimeters(heightFeet, heightInches);
 	const sexOffset = input.sex === 'male' ? 5 : -161;
-	const bmr = 10 * weightKilograms + 6.25 * heightCentimeters - 5 * input.age + sexOffset;
+	const bmr = 10 * weightKilograms + 6.25 * heightCentimeters - 5 * age + sexOffset;
 	const dailyCalories = roundWhole(bmr * ACTIVITY_MULTIPLIERS[input.activityLevel]);
 	const requestedProtein = roundWhole(weightPounds * proteinPerPound);
 	const dailyProtein = Math.min(requestedProtein, Math.floor(dailyCalories / 4));

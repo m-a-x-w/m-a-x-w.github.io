@@ -87,3 +87,44 @@ test('calculateDiningGoalTargets clamps impossible carb allocations', async () =
 	assert.ok(macroCalories(result.daily) <= result.daily.calories);
 	assert.equal(macroCalories(result.daily), 220);
 });
+
+test('calculateDiningGoalTargets sanitizes non-finite numeric inputs', async () => {
+	const module = await importTypeScriptModule(
+		new URL('../src/lib/dining/goals-calculator.ts', import.meta.url)
+	);
+
+	const result = module.calculateDiningGoalTargets({
+		sex: 'male',
+		age: NaN,
+		heightFeet: NaN,
+		heightInches: NaN,
+		weightPounds: NaN,
+		activityLevel: 'moderate',
+		mealsPerDay: NaN,
+		proteinPerPound: NaN
+	});
+
+	assert.deepEqual(result, {
+		daily: {
+			calories: 8,
+			protein: 0,
+			carbs: 2,
+			fat: 0
+		},
+		perMeal: {
+			calories: 8,
+			protein: 0,
+			carbs: 2,
+			fat: 0
+		}
+	});
+	assert.ok(Number.isFinite(result.daily.calories));
+	assert.ok(Number.isFinite(result.daily.protein));
+	assert.ok(Number.isFinite(result.daily.carbs));
+	assert.ok(Number.isFinite(result.daily.fat));
+	assert.ok(Number.isFinite(result.perMeal.calories));
+	assert.ok(Number.isFinite(result.perMeal.protein));
+	assert.ok(Number.isFinite(result.perMeal.carbs));
+	assert.ok(Number.isFinite(result.perMeal.fat));
+	assert.ok(macroCalories(result.daily) <= result.daily.calories);
+});
