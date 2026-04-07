@@ -70,14 +70,16 @@ export function calculateDiningGoalTargets(
 	let dailyFat = roundWhole((dailyCalories * 0.25) / 9);
 	let fatCalories = dailyFat * 9;
 	let remainingCalories = dailyCalories - proteinCalories - fatCalories;
+	let clampCarbsToZero = false;
 
 	if (remainingCalories < 0) {
 		dailyFat = Math.max(0, Math.floor((dailyCalories - proteinCalories) / 9));
 		fatCalories = dailyFat * 9;
 		remainingCalories = dailyCalories - proteinCalories - fatCalories;
+		clampCarbsToZero = true;
 	}
 
-	const dailyCarbs = roundWhole(remainingCalories / 4);
+	const dailyCarbs = clampCarbsToZero ? 0 : roundWhole(remainingCalories / 4);
 
 	return {
 		daily: {

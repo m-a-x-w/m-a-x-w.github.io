@@ -44,14 +44,14 @@ test('calculateDiningGoalTargets clamps impossible carb allocations', async () =
 	);
 
 	const result = module.calculateDiningGoalTargets({
-		sex: 'female',
-		age: 30,
-		heightFeet: 5,
-		heightInches: 2,
-		weightPounds: 110,
+		sex: 'male',
+		age: 18,
+		heightFeet: 1,
+		heightInches: 0,
+		weightPounds: 10,
 		activityLevel: 'light',
 		mealsPerDay: 3,
-		proteinPerPound: 4
+		proteinPerPound: 5
 	});
 
 	assert.equal(result.daily.carbs, 0);
