@@ -129,6 +129,27 @@ test('calculateDiningGoalTargets sanitizes non-finite numeric inputs', async () 
 	assert.ok(macroCalories(result.daily) <= result.daily.calories);
 });
 
+test('goals calculator exports defaults and activity options', async () => {
+	const module = await importTypeScriptModule(
+		new URL('../src/lib/dining/goals-calculator.ts', import.meta.url)
+	);
+
+	assert.deepEqual(module.DEFAULT_DINING_GOALS_CALCULATOR_INPUT, {
+		sex: 'male',
+		age: 21,
+		heightFeet: 5,
+		heightInches: 11,
+		weightPounds: 180,
+		activityLevel: 'moderate',
+		mealsPerDay: 3,
+		proteinPerPound: 0.8
+	});
+	assert.deepEqual(
+		module.DINING_GOALS_CALCULATOR_ACTIVITY_OPTIONS.map((option) => option.value),
+		['sedentary', 'light', 'moderate', 'active', 'very-active']
+	);
+});
+
 test('calculateDiningGoalTargets falls back from invalid enum inputs', async () => {
 	const module = await importTypeScriptModule(
 		new URL('../src/lib/dining/goals-calculator.ts', import.meta.url)
