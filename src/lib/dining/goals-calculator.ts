@@ -77,7 +77,7 @@ export function calculateDiningGoalTargets(
 		remainingCalories = dailyCalories - proteinCalories - fatCalories;
 	}
 
-	const dailyCarbs = remainingCalories <= 0 ? 0 : roundWhole(remainingCalories / 4);
+	const dailyCarbs = remainingCalories <= 0 ? 0 : Math.floor(remainingCalories / 4);
 
 	return {
 		daily: {
