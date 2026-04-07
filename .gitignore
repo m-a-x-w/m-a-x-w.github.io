@@ -21,3 +21,12 @@ Thumbs.db
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Local AI tooling
+.claude
+.codex
+.cursor
+.roo
+
+# Generated planning artifacts
+docs/superpowers/plans/

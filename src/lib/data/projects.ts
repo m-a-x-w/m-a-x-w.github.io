@@ -47,5 +47,14 @@ export const projects: Project[] = [
 		details:
 			'Personalized programming lessons to student interests with interactive coding exercises, real-time feedback, and progress tracking.',
 		stack: ['Go', 'Python', 'HTML/CSS']
+	},
+	{
+		slug: 'dining',
+		title: 'Dining WASM Demo',
+		description: 'WebAssembly-powered Purdue dining meal recommender.',
+		details: 'Interactive demo for ranking Purdue dining options with a Go WebAssembly runtime.',
+		stack: ['Go', 'WebAssembly', 'SvelteKit'],
+		url: '/dining',
+		repo: 'https://github.com/m-a-x-w/purdue-dining-tracker'
 	}
 ];
