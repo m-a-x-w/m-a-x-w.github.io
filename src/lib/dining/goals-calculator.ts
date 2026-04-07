@@ -64,7 +64,8 @@ export function calculateDiningGoalTargets(
 	const sexOffset = input.sex === 'male' ? 5 : -161;
 	const bmr = 10 * weightKilograms + 6.25 * heightCentimeters - 5 * input.age + sexOffset;
 	const dailyCalories = roundWhole(bmr * ACTIVITY_MULTIPLIERS[input.activityLevel]);
-	const dailyProtein = roundWhole(weightPounds * proteinPerPound);
+	const requestedProtein = roundWhole(weightPounds * proteinPerPound);
+	const dailyProtein = Math.min(requestedProtein, Math.floor(dailyCalories / 4));
 	const proteinCalories = dailyProtein * 4;
 
 	let dailyFat = roundWhole((dailyCalories * 0.25) / 9);

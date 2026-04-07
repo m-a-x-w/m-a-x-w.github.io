@@ -66,23 +66,24 @@ test('calculateDiningGoalTargets clamps impossible carb allocations', async () =
 		weightPounds: 50,
 		activityLevel: 'moderate',
 		mealsPerDay: 3,
-		proteinPerPound: 1
+		proteinPerPound: 10
 	});
 
 	assert.deepEqual(result, {
 		daily: {
 			calories: 220,
-			protein: 50,
+			protein: 55,
 			carbs: 0,
-			fat: 2
+			fat: 0
 		},
 		perMeal: {
 			calories: 73,
-			protein: 17,
+			protein: 18,
 			carbs: 0,
-			fat: 1
+			fat: 0
 		}
 	});
 
 	assert.ok(macroCalories(result.daily) <= result.daily.calories);
+	assert.equal(macroCalories(result.daily), 220);
 });
