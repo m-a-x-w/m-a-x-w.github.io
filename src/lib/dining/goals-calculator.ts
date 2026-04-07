@@ -33,12 +33,31 @@ export type DiningGoalsCalculatorOutput = {
 	};
 };
 
+export const DINING_GOALS_CALCULATOR_ACTIVITY_OPTIONS = [
+	{ value: 'sedentary', label: 'Sedentary' },
+	{ value: 'light', label: 'Lightly active' },
+	{ value: 'moderate', label: 'Moderately active' },
+	{ value: 'active', label: 'Active' },
+	{ value: 'very-active', label: 'Very active' }
+] as const;
+
 const ACTIVITY_MULTIPLIERS: Record<DiningGoalsCalculatorActivity, number> = {
 	sedentary: 1.2,
 	light: 1.375,
 	moderate: 1.55,
 	active: 1.725,
 	'very-active': 1.9
+};
+
+export const DEFAULT_DINING_GOALS_CALCULATOR_INPUT: DiningGoalsCalculatorInput = {
+	sex: 'male',
+	age: 21,
+	heightFeet: 5,
+	heightInches: 11,
+	weightPounds: 180,
+	activityLevel: 'moderate',
+	mealsPerDay: 3,
+	proteinPerPound: 0.8
 };
 
 function roundWhole(value: number): number {
