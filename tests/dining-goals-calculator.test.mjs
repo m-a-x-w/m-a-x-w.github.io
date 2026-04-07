@@ -31,11 +31,20 @@ test('calculateDiningGoalTargets returns daily and per-meal values', async () =>
 		proteinPerPound: 0.8
 	});
 
-	assert.equal(result.daily.protein, 144);
-	assert.equal(result.perMeal.protein, 36);
-	assert.ok(result.daily.calories > 2000);
-	assert.ok(result.perMeal.calories > 500);
-	assert.ok(result.daily.carbs >= 0);
+	assert.deepEqual(result, {
+		daily: {
+			calories: 2858,
+			protein: 144,
+			carbs: 393,
+			fat: 79
+		},
+		perMeal: {
+			calories: 715,
+			protein: 36,
+			carbs: 98,
+			fat: 20
+		}
+	});
 });
 
 test('calculateDiningGoalTargets clamps impossible carb allocations', async () => {
@@ -46,15 +55,26 @@ test('calculateDiningGoalTargets clamps impossible carb allocations', async () =
 	const result = module.calculateDiningGoalTargets({
 		sex: 'male',
 		age: 18,
-		heightFeet: 1,
+		heightFeet: 0,
 		heightInches: 0,
-		weightPounds: 10,
-		activityLevel: 'light',
+		weightPounds: 50,
+		activityLevel: 'moderate',
 		mealsPerDay: 3,
-		proteinPerPound: 5
+		proteinPerPound: 1
 	});
 
-	assert.equal(result.daily.carbs, 0);
-	assert.ok(result.daily.fat >= 0);
-	assert.equal(result.perMeal.carbs, 0);
+	assert.deepEqual(result, {
+		daily: {
+			calories: 220,
+			protein: 50,
+			carbs: 1,
+			fat: 2
+		},
+		perMeal: {
+			calories: 73,
+			protein: 17,
+			carbs: 0,
+			fat: 1
+		}
+	});
 });
