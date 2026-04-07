@@ -57,13 +57,17 @@ function finiteNumber(value: number, fallback = 0): number {
 	return Number.isFinite(value) ? value : fallback;
 }
 
+function nonNegativeFiniteNumber(value: number, fallback = 0): number {
+	return Math.max(0, finiteNumber(value, fallback));
+}
+
 export function calculateDiningGoalTargets(
 	input: DiningGoalsCalculatorInput
 ): DiningGoalsCalculatorOutput {
-	const age = finiteNumber(input.age);
-	const heightFeet = finiteNumber(input.heightFeet);
-	const heightInches = finiteNumber(input.heightInches);
-	const weightPounds = finiteNumber(input.weightPounds);
+	const age = nonNegativeFiniteNumber(input.age);
+	const heightFeet = nonNegativeFiniteNumber(input.heightFeet);
+	const heightInches = nonNegativeFiniteNumber(input.heightInches);
+	const weightPounds = nonNegativeFiniteNumber(input.weightPounds);
 	const mealsPerDay = Math.max(1, Math.round(finiteNumber(input.mealsPerDay)));
 	const proteinPerPound = Math.max(0.01, finiteNumber(input.proteinPerPound));
 	const weightKilograms = poundsToKilograms(weightPounds);
