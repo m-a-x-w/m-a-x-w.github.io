@@ -95,10 +95,10 @@ test('calculateDiningGoalTargets sanitizes non-finite numeric inputs', async () 
 
 	const result = module.calculateDiningGoalTargets({
 		sex: 'male',
-		age: NaN,
+		age: -5,
 		heightFeet: NaN,
-		heightInches: NaN,
-		weightPounds: NaN,
+		heightInches: -2,
+		weightPounds: -10,
 		activityLevel: 'moderate',
 		mealsPerDay: NaN,
 		proteinPerPound: NaN
