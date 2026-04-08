@@ -206,8 +206,8 @@
 	<form class="control-panel" on:submit|preventDefault={handleSubmit}>
 		<section class="panel-section">
 			<div class="section-heading">
-				<h2>Scope</h2>
-				<p>Choose where to search and how broad the recommendation pass should be.</p>
+				<h2>Search</h2>
+				<p>Set hall, meal, and date.</p>
 			</div>
 
 			<div class="field-grid">
@@ -239,8 +239,8 @@
 		<section class="panel-section">
 			<div class="section-heading section-heading--split">
 				<div>
-					<h2>Goals</h2>
-					<p>Set the meal profile the recommender should chase.</p>
+					<h2>Targets</h2>
+					<p>Set per-meal macro targets.</p>
 				</div>
 
 				<button
@@ -252,7 +252,7 @@
 					on:click={toggleGoalsCalculator}
 					disabled={disableControls}
 				>
-					Goals
+					Calc
 				</button>
 			</div>
 
@@ -265,8 +265,8 @@
 					aria-label="Goals calculator"
 				>
 					<div class="goals-calculator-copy">
-						<h3>Meal target calculator</h3>
-						<p>Estimate daily calories and split them into per-meal targets you can apply below.</p>
+						<h3>Macro calculator</h3>
+						<p>Estimate daily intake and derive per-meal targets.</p>
 					</div>
 
 					<div class="field-grid field-grid--calculator">
@@ -390,8 +390,8 @@
 
 		<section class="panel-section panel-section--compact">
 			<div class="section-heading">
-				<h2>Tuning</h2>
-				<p>Adjust how conservative or exploratory the recommendation pass should be.</p>
+				<h2>Controls</h2>
+				<p>Set recommendation behavior.</p>
 			</div>
 
 			<div class="field-grid field-grid--compact">
@@ -433,8 +433,8 @@
 	{#if result?.error}
 		<section class="error" aria-live="polite">
 			<div class="section-heading">
-				<h2>Runtime error</h2>
-				<p>The recommender returned an error before results could be grouped.</p>
+				<h2>Runtime Error</h2>
+				<p>The runtime failed before grouping results.</p>
 			</div>
 			<p>{result.error}</p>
 		</section>
@@ -443,10 +443,10 @@
 	{#if result && !result.error && result.results.length === 0}
 		<section class="empty" aria-live="polite">
 			<div class="section-heading">
-				<h2>No matches</h2>
-				<p>No recommendation groups came back for {lastSubmittedScope} on {lastSubmittedDate}.</p>
+				<h2>No Results</h2>
+				<p>No result groups for {lastSubmittedScope} on {lastSubmittedDate}.</p>
 			</div>
-			<p>Try widening the hall or meal scope, or relax the macro targets and run it again.</p>
+			<p>Widen scope or lower targets and rerun.</p>
 		</section>
 	{/if}
 
@@ -454,7 +454,7 @@
 		<section class="results" aria-live="polite">
 			<div class="results-header">
 				<div>
-					<h2>Recommendations</h2>
+					<h2>Results</h2>
 					<p>
 						scope: {lastSubmittedScope} | date: {lastSubmittedDate} | groups: {resultGroupCount} |
 						options: {recommendationCount}

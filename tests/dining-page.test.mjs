@@ -6,6 +6,13 @@ import ts from 'typescript';
 async function transpileTypeScriptModule(path, replacements = []) {
 	let source = await readFile(path, 'utf8');
 
+	if (source.includes("from './goals-calculator'")) {
+		const calculatorUrl = await transpileTypeScriptModule(
+			new URL('../src/lib/dining/goals-calculator.ts', import.meta.url)
+		);
+		source = source.replaceAll("from './goals-calculator'", `from '${calculatorUrl}'`);
+	}
+
 	for (const [needle, replacement] of replacements) {
 		source = source.replaceAll(needle, replacement);
 	}
@@ -44,6 +51,12 @@ test('dining page options expose synthetic all selectors', async () => {
 	assert.deepEqual(module.DINING_MEAL_OPTIONS.slice(1), module.DINING_MEALS);
 	assert.notStrictEqual(module.DEFAULT_DINING_PARAMS.goals, module.DEFAULT_DINING_PAGE_PARAMS.goals);
 	assert.deepEqual(module.DEFAULT_DINING_PARAMS.goals, module.DEFAULT_DINING_PAGE_PARAMS.goals);
+	assert.deepEqual(module.DEFAULT_DINING_PAGE_PARAMS.goals, {
+		calories: 1506,
+		protein: 88,
+		carbs: 194,
+		fat: 42
+	});
 });
 
 test('buildDiningRequestPlan expands all halls and all meals', async () => {
@@ -208,8 +221,8 @@ test('createDiningPageParams returns fresh page state with cloned goals', async 
 	assert.deepEqual(first.goals, typesModule.DEFAULT_DINING_PAGE_PARAMS.goals);
 
 	first.goals.calories = 999;
-	assert.equal(typesModule.DEFAULT_DINING_PAGE_PARAMS.goals.calories, 750);
-	assert.equal(second.goals.calories, 750);
+	assert.equal(typesModule.DEFAULT_DINING_PAGE_PARAMS.goals.calories, 1506);
+	assert.equal(second.goals.calories, 1506);
 });
 
 test('describeDiningScope formats all selectors cleanly', async () => {

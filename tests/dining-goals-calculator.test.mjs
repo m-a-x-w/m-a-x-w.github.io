@@ -136,13 +136,13 @@ test('goals calculator exports defaults and activity options', async () => {
 
 	assert.deepEqual(module.DEFAULT_DINING_GOALS_CALCULATOR_INPUT, {
 		sex: 'male',
-		age: 21,
-		heightFeet: 5,
-		heightInches: 11,
-		weightPounds: 180,
+		age: 18,
+		heightFeet: 6,
+		heightInches: 0,
+		weightPounds: 195,
 		activityLevel: 'moderate',
-		mealsPerDay: 3,
-		proteinPerPound: 0.8
+		mealsPerDay: 2,
+		proteinPerPound: 0.9
 	});
 	assert.deepEqual(
 		module.DINING_GOALS_CALCULATOR_ACTIVITY_OPTIONS.map((option) => option.value),

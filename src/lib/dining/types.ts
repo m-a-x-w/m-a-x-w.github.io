@@ -1,3 +1,8 @@
+import {
+	DEFAULT_DINING_GOALS_CALCULATOR_INPUT,
+	calculateDiningGoalTargets
+} from './goals-calculator';
+
 export type MacroGoals = {
 	calories: number;
 	protein: number;
@@ -5,9 +10,33 @@ export type MacroGoals = {
 	fat: number;
 };
 
+const DEFAULT_DINING_GOALS = calculateDiningGoalTargets(
+	DEFAULT_DINING_GOALS_CALCULATOR_INPUT
+).perMeal;
+
+function createDefaultDiningSharedValues() {
+	return {
+		goals: { ...DEFAULT_DINING_GOALS },
+		diversity: 'balanced' as const
+	};
+}
+
+export const DINING_ALL_LOCATIONS = 'all' as const;
+export const DINING_ALL_MEALS = 'all' as const;
+
 export type DiningLocation = (typeof DINING_LOCATIONS)[number];
 export type DiningMeal = (typeof DINING_MEALS)[number]['value'];
 export type DiningDiversity = (typeof DINING_DIVERSITY_OPTIONS)[number]['value'];
+export type DiningLocationSelection = DiningLocation | typeof DINING_ALL_LOCATIONS;
+export type DiningMealSelection = DiningMeal | typeof DINING_ALL_MEALS;
+
+export type DiningPageParams = {
+	location: DiningLocationSelection;
+	meal: DiningMealSelection;
+	date: string;
+	goals: MacroGoals;
+	diversity: DiningDiversity;
+};
 
 export type DiningRecommendParams = {
 	location: DiningLocation;
@@ -52,23 +81,34 @@ export const DINING_MEALS = [
 	{ value: 'dinner', label: 'Dinner' }
 ] as const;
 
+export const DINING_LOCATION_OPTIONS = [
+	{ value: DINING_ALL_LOCATIONS, label: 'All halls' },
+	...DINING_LOCATIONS.map((location) => ({ value: location, label: location }))
+] as const;
+
+export const DINING_MEAL_OPTIONS = [
+	{ value: DINING_ALL_MEALS, label: 'All meals' },
+	...DINING_MEALS
+] as const;
+
 export const DINING_DIVERSITY_OPTIONS = [
-	{ value: 'balanced', label: 'Balanced' },
-	{ value: 'familiar', label: 'Familiar' },
-	{ value: 'adventurous', label: 'Adventurous' }
+	{ value: 'balanced', label: 'Standard' },
+	{ value: 'familiar', label: 'Repeat-friendly' },
+	{ value: 'adventurous', label: 'More variety' }
 ] as const;
 
 export const DEFAULT_DINING_PARAMS: DiningRecommendParams = {
 	location: 'Earhart',
 	meal: 'lunch',
 	date: '',
-	goals: {
-		calories: 750,
-		protein: 45,
-		carbs: 70,
-		fat: 25
-	},
-	diversity: 'balanced'
+	...createDefaultDiningSharedValues()
+};
+
+export const DEFAULT_DINING_PAGE_PARAMS: DiningPageParams = {
+	location: DINING_ALL_LOCATIONS,
+	meal: 'lunch',
+	date: '',
+	...createDefaultDiningSharedValues()
 };
 
 export type DiningRecommendResultShape = {
