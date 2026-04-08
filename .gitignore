@@ -30,3 +30,4 @@ vite.config.ts.timestamp-*
 
 # Generated planning artifacts
 docs/superpowers/plans/
+docs/
