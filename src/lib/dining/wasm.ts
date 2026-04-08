@@ -10,6 +10,7 @@ import {
 	type DiningRecommendResult,
 	type MacroGoals
 } from './types';
+import { refineDiningRuntimeError, summarizeDiningApiPayload } from './diagnostics';
 
 declare global {
 	interface Window {
@@ -37,6 +38,8 @@ const SSR_UNAVAILABLE_MESSAGE =
 let runtimeState: DiningRuntimeState | null = null;
 let runtimeInitPromise: Promise<DiningRuntimeState> | null = null;
 let wasmExecScriptPromise: Promise<void> | null = null;
+let diningApiObservation = null as ReturnType<typeof summarizeDiningApiPayload>;
+let fetchObserverInstalled = false;
 
 function loadingState(): DiningRuntimeState {
 	return { status: 'loading', message: LOADING_MESSAGE };
@@ -89,6 +92,40 @@ function delay(ms: number): Promise<void> {
 	return new Promise((resolve) => {
 		setTimeout(resolve, ms);
 	});
+}
+
+function observeDiningApiResponse(value: unknown): void {
+	const summary = summarizeDiningApiPayload(value);
+	if (!summary?.sawCourtData) return;
+
+	diningApiObservation = summary;
+}
+
+function installDiningApiFetchObserver(): void {
+	if (!browser || fetchObserverInstalled) return;
+	if (typeof window.fetch !== 'function') return;
+
+	const originalFetch = window.fetch.bind(window);
+
+	window.fetch = async (...args) => {
+		const response = await originalFetch(...args);
+		const contentType = response.headers.get('content-type') ?? '';
+
+		if (!contentType.includes('application/json')) {
+			return response;
+		}
+
+		try {
+			const payload = await response.clone().json();
+			observeDiningApiResponse(payload);
+		} catch {
+			// Ignore unrelated JSON payloads and non-JSON bodies mislabelled as JSON.
+		}
+
+		return response;
+	};
+
+	fetchObserverInstalled = true;
 }
 
 function isMacroGoals(value: unknown): value is MacroGoals {
@@ -196,6 +233,7 @@ async function initializeDiningRuntime(): Promise<DiningRuntimeState> {
 	}
 
 	try {
+		installDiningApiFetchObserver();
 		await loadWasmExecScript();
 
 		const Go = window.Go;
@@ -320,6 +358,8 @@ export async function recommendDining(
 	if (!result) {
 		return createErrorResult('Dining WASM returned an unexpected response shape.');
 	}
+
+	result.error = refineDiningRuntimeError(result.error, diningApiObservation);
 
 	return result;
 }
