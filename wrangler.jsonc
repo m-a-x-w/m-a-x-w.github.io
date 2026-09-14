@@ -1,0 +1,15 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "maxweinstein-dev",
+	"account_id": "64bc2035b7dbf718d54d4a7c626658b9",
+	"compatibility_date": "2026-09-12",
+	"assets": {
+		"directory": "./build",
+		"not_found_handling": "404-page"
+	},
+	"workers_dev": false,
+	"routes": [
+		{ "pattern": "maxweinstein.dev", "custom_domain": true },
+		{ "pattern": "www.maxweinstein.dev", "custom_domain": true }
+	]
+}
