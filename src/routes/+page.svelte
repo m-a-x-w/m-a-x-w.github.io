@@ -16,7 +16,7 @@
 </svelte:head>
 
 <header class="hero">
-	<h1><span class="prompt">$</span> max weinstein</h1>
+	<h1>max weinstein</h1>
 	<p class="tagline">reverse engineering, program analysis</p>
 </header>
 
@@ -58,11 +58,6 @@
 
 	.hero h1 {
 		margin-bottom: 0.2rem;
-	}
-
-	.prompt {
-		color: var(--accent);
-		margin-right: 0.4em;
 	}
 
 	.tagline {
