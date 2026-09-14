@@ -7,6 +7,12 @@ export interface WorkEntry {
 
 export const work: WorkEntry[] = [
 	{
+		company: 'Canopy Connect',
+		role: 'Software Engineer',
+		period: 'Apr 2026 - Present',
+		description: ''
+	},
+	{
 		company: 'Freelance',
 		role: 'Reverse Engineering',
 		period: 'May 2025 - Aug 2025',
