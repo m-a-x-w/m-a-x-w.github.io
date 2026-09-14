@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../app.css';
-	import Nav from '$lib/components/Nav.svelte';
+	import { page } from '$app/state';
 	import Footer from '$lib/components/Footer.svelte';
 	import favicon from '$lib/assets/favicon.svg';
 
@@ -12,7 +12,9 @@
 </svelte:head>
 
 <div class="site">
-	<Nav />
+	{#if page.url.pathname !== '/'}
+		<a class="home" href="/">&larr; max weinstein</a>
+	{/if}
 	<main>
 		{@render children()}
 	</main>
@@ -23,13 +25,13 @@
 	.site {
 		max-width: var(--max-width);
 		margin: 0 auto;
-		padding: 0 1.5rem;
-		min-height: 100vh;
-		display: flex;
-		flex-direction: column;
+		padding: 2.5rem 1.5rem 2rem;
 	}
 
-	main {
-		flex: 1;
+	.home {
+		display: inline-block;
+		color: var(--muted);
+		font-size: 0.85rem;
+		margin-bottom: 2rem;
 	}
 </style>

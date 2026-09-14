@@ -1,12 +1,14 @@
 :root {
-	--bg: #faf8f5;
-	--text: #2c2c2c;
-	--muted: #8a8580;
-	--accent: #c4a882;
-	--border: #e8e4df;
+	--bg: #0e0f11;
+	--surface: #16181c;
+	--text: #d7d9de;
+	--muted: #7d828c;
+	--accent: #8fd18a;
+	--border: #24272d;
 
-	--font-body: -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-	--font-heading: Georgia, 'Iowan Old Style', 'Palatino Linotype', serif;
+	--font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+	--font-body: var(--font-mono);
+	--font-heading: var(--font-mono);
 
 	--max-width: 640px;
 }
@@ -20,11 +22,12 @@
 }
 
 html {
-	font-size: clamp(15px, 1.1vw, 18px);
+	font-size: clamp(14px, 1vw, 16px);
+	color-scheme: dark;
 }
 
 body {
-	font-family: var(--font-body);
+	font-family: var(--font-mono);
 	color: var(--text);
 	background: var(--bg);
 	line-height: 1.7;
@@ -35,30 +38,32 @@ body {
 h1,
 h2,
 h3 {
-	font-family: var(--font-heading);
-	font-weight: 400;
+	font-weight: 600;
 	line-height: 1.3;
 }
 
 h1 {
-	font-size: 2rem;
-	margin-bottom: 1.5rem;
+	font-size: 1.5rem;
+	margin-bottom: 1rem;
 }
 
 h2 {
-	font-size: 1.4rem;
-	margin-bottom: 0.4em;
+	font-size: 0.85rem;
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	color: var(--muted);
+	margin-bottom: 0.8rem;
 }
 
 h3 {
-	font-size: 1.15rem;
+	font-size: 1rem;
 	margin-bottom: 0.3em;
 }
 
 a {
 	color: var(--text);
 	text-decoration: none;
-	transition: color 0.2s ease;
+	transition: color 0.15s ease;
 }
 
 a:hover {

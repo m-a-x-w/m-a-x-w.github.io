@@ -4,7 +4,9 @@
 		<span class="sep">/</span>
 		<a href="https://github.com/m-a-x-w" target="_blank" rel="noopener">GitHub</a>
 		<span class="sep">/</span>
-		<a href="https://www.linkedin.com/in/max-weinstein-04a68423b/" target="_blank" rel="noopener">LinkedIn</a>
+		<a href="https://www.linkedin.com/in/max-weinstein-04a68423b/" target="_blank" rel="noopener"
+			>LinkedIn</a
+		>
 		<span class="sep">/</span>
 		<a href="/resume.pdf" target="_blank">Resume</a>
 	</div>
@@ -12,9 +14,9 @@
 
 <style>
 	footer {
-		padding: 3rem 0 2rem;
+		padding: 1.5rem 0 0;
 		border-top: 1px solid var(--border);
-		margin-top: 4rem;
+		margin-top: 1rem;
 	}
 
 	.links {

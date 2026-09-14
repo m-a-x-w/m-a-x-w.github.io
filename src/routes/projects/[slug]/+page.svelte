@@ -2,7 +2,11 @@
 	import type { Component } from 'svelte';
 	import type { Project } from '$lib/data/projects';
 
-	let { data }: { data: { project: Project; content: Component | null; meta: Record<string, string> | undefined } } = $props();
+	let {
+		data
+	}: {
+		data: { project: Project; content: Component | null; meta: Record<string, string> | undefined };
+	} = $props();
 
 	const Content = $derived(data.content);
 
@@ -67,7 +71,7 @@
 	</div>
 
 	<footer>
-		<a href="/projects">&larr; All projects</a>
+		<a href="/">&larr; back</a>
 	</footer>
 </article>
 
@@ -115,7 +119,7 @@
 	}
 
 	.content :global(pre) {
-		background: #f5f2ee;
+		background: var(--surface);
 		padding: 1rem 1.2rem;
 		border-radius: 4px;
 		overflow-x: auto;
@@ -125,7 +129,7 @@
 
 	.content :global(code) {
 		font-size: 0.9em;
-		background: #f5f2ee;
+		background: var(--surface);
 		padding: 0.15em 0.35em;
 		border-radius: 3px;
 	}

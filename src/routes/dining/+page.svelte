@@ -26,11 +26,7 @@
 		getDiningChoiceSideNames,
 		runDiningRecommendations
 	} from '$lib/dining/page';
-	import {
-		loadDiningRuntime,
-		recommendDining,
-		type DiningRuntimeState
-	} from '$lib/dining/wasm';
+	import { loadDiningRuntime, recommendDining, type DiningRuntimeState } from '$lib/dining/wasm';
 
 	const mealLabels: Record<string, string> = Object.fromEntries(
 		DINING_MEALS.map((option) => [option.value, option.label])
@@ -419,12 +415,7 @@
 				{/if}
 			</button>
 
-			<button
-				type="button"
-				class="secondary"
-				on:click={handleReset}
-				disabled={disableControls}
-			>
+			<button type="button" class="secondary" on:click={handleReset} disabled={disableControls}>
 				Reset
 			</button>
 		</div>
@@ -456,8 +447,8 @@
 				<div>
 					<h2>Results</h2>
 					<p>
-						scope: {lastSubmittedScope} | date: {lastSubmittedDate} | groups: {resultGroupCount} |
-						options: {recommendationCount}
+						scope: {lastSubmittedScope} | date: {lastSubmittedDate} | groups: {resultGroupCount} | options:
+						{recommendationCount}
 					</p>
 				</div>
 			</div>
@@ -467,7 +458,8 @@
 					<article class="card">
 						<h3>{entry.location} / {mealLabels[entry.meal] ?? entry.meal}</h3>
 						<p class="card-note">
-							{entry.choices.length} {entry.choices.length === 1 ? 'ranked match' : 'ranked matches'}
+							{entry.choices.length}
+							{entry.choices.length === 1 ? 'ranked match' : 'ranked matches'}
 						</p>
 
 						<ol class="choices">
@@ -475,12 +467,13 @@
 								<li class="choice">
 									<p class="choice-rank">choice {choice.rank}</p>
 									<p>
-										<strong>
-											entree:
-										</strong>
+										<strong> entree: </strong>
 										{formatDiningItemName(choice.entree.name, getDiningChoiceEntreeCount(choice))}
 									</p>
-									<p><strong>sides:</strong> {formatRepeatedDiningItemNames(getDiningChoiceSideNames(choice)) || 'None'}</p>
+									<p>
+										<strong>sides:</strong>
+										{formatRepeatedDiningItemNames(getDiningChoiceSideNames(choice)) || 'None'}
+									</p>
 									<p><strong>totals:</strong> {formatTotals(choice)}</p>
 								</li>
 							{/each}
@@ -583,7 +576,7 @@
 		padding: 1rem;
 		border: 1px solid var(--border);
 		border-radius: 10px;
-		background: #fcfaf7;
+		background: var(--surface);
 	}
 
 	.goals-calculator-copy {
@@ -614,7 +607,7 @@
 		padding: 0.8rem;
 		border: 1px solid var(--border);
 		border-radius: 8px;
-		background: #fff;
+		background: var(--surface);
 	}
 
 	.goals-calculator-actions {
@@ -644,7 +637,7 @@
 		width: 100%;
 		border: 1px solid var(--border);
 		border-radius: 8px;
-		background: #fff;
+		background: var(--surface);
 		color: var(--text);
 		font: inherit;
 		padding: 0.72rem 0.82rem;
@@ -665,13 +658,13 @@
 
 	button {
 		cursor: pointer;
-		background: #fff;
+		background: var(--surface);
 		color: var(--text);
 	}
 
 	button:hover:not(:disabled) {
 		border-color: var(--accent);
-		background: #fff;
+		background: var(--surface);
 	}
 
 	button.secondary {
@@ -683,7 +676,7 @@
 	button:disabled {
 		cursor: not-allowed;
 		color: var(--muted);
-		background: #f5f2ee;
+		background: var(--surface);
 		box-shadow: none;
 	}
 
@@ -717,7 +710,7 @@
 		border: 1px solid var(--border);
 		border-radius: 8px;
 		padding: 1rem;
-		background: #fff;
+		background: var(--surface);
 	}
 
 	.choices {

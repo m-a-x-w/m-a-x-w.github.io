@@ -1,64 +1,123 @@
+<script lang="ts">
+	import { work } from '$lib/data/work';
+	import { projects } from '$lib/data/projects';
+</script>
+
 <svelte:head>
 	<title>Max Weinstein</title>
-	<meta name="description" content="Personal site of Max Weinstein -- CS @ Purdue." />
+	<meta name="description" content="Max Weinstein -- reverse engineering, program analysis." />
 	<meta property="og:title" content="Max Weinstein" />
-	<meta property="og:description" content="Personal site of Max Weinstein -- CS @ Purdue." />
+	<meta
+		property="og:description"
+		content="Max Weinstein -- reverse engineering, program analysis."
+	/>
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://wmax.dev" />
+	<meta property="og:url" content="https://maxweinstein.dev" />
 </svelte:head>
 
-<div class="landing">
-	<h1>Max Weinstein</h1>
-	<p class="tagline">cs @ purdue | machine learning & reverse engineering</p>
+<header class="hero">
+	<h1><span class="prompt">$</span> max weinstein</h1>
+	<p class="tagline">reverse engineering, program analysis</p>
+</header>
 
-	<nav class="sections">
-		<a href="/work">Work</a>
-		<a href="/projects">Projects</a>
-		<a href="/about">About</a>
-		<a href="/thoughts">Thoughts</a>
-	</nav>
-</div>
+<section>
+	<h2>Work</h2>
+	<ul class="list">
+		{#each work as entry}
+			<li>
+				<div><strong>{entry.role}</strong> <span class="muted">@ {entry.company}</span></div>
+				<p class="muted"><span class="period">{entry.period}</span> · {entry.description}</p>
+			</li>
+		{/each}
+	</ul>
+</section>
+
+<section>
+	<h2>Projects</h2>
+	<ul class="list">
+		{#each projects as project}
+			<li>
+				<div class="row">
+					<a href="/projects/{project.slug}"><strong>{project.title}</strong></a>
+					<span class="links muted">
+						{#if project.url}<a href={project.url}>site</a>{/if}
+						{#if project.url && project.repo}<span class="sep">/</span>{/if}
+						{#if project.repo}<a href={project.repo} target="_blank" rel="noopener">code</a>{/if}
+					</span>
+				</div>
+				<p class="muted">{project.description}</p>
+			</li>
+		{/each}
+	</ul>
+</section>
 
 <style>
-	.landing {
-		padding: 8rem 0 4rem;
+	.hero {
+		margin-bottom: 2.5rem;
 	}
 
-	h1 {
-		font-size: 2.4rem;
-		margin-bottom: 0.3em;
+	.hero h1 {
+		margin-bottom: 0.2rem;
+	}
+
+	.prompt {
+		color: var(--accent);
+		margin-right: 0.4em;
 	}
 
 	.tagline {
 		color: var(--muted);
-		font-size: 1.05rem;
+	}
+
+	section {
 		margin-bottom: 2.5rem;
 	}
 
-	.sections {
+	.list {
+		list-style: none;
+		padding: 0;
+	}
+
+	.list li {
+		padding: 0.7rem 0;
+		border-top: 1px solid var(--border);
+	}
+
+	.row {
 		display: flex;
-		gap: 1.5rem;
+		justify-content: space-between;
+		align-items: baseline;
+		gap: 1rem;
+		flex-wrap: wrap;
 	}
 
-	.sections a {
+	.muted {
 		color: var(--muted);
-		font-size: 0.95rem;
-		border-bottom: 1px solid transparent;
-		padding-bottom: 2px;
 	}
 
-	.sections a:hover {
-		color: var(--text);
-		border-bottom-color: var(--accent);
+	.period {
+		color: var(--accent);
+		opacity: 0.8;
 	}
 
-	@media (max-width: 480px) {
-		.landing {
-			padding: 4rem 0 2rem;
-		}
+	.links {
+		font-size: 0.85rem;
+	}
 
-		h1 {
-			font-size: 1.8rem;
-		}
+	.links a {
+		color: var(--muted);
+	}
+
+	.links a:hover {
+		color: var(--accent);
+	}
+
+	.sep {
+		margin: 0 0.4em;
+		color: var(--border);
+	}
+
+	p {
+		font-size: 0.9rem;
 	}
 </style>
