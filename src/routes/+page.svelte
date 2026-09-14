@@ -25,8 +25,10 @@
 	<ul class="list">
 		{#each work as entry}
 			<li>
-				<div><strong>{entry.role}</strong> <span class="muted">@ {entry.company}</span></div>
-				<p class="muted"><span class="period">{entry.period}</span> · {entry.description}</p>
+				<div class="row">
+					<span><strong>{entry.role}</strong> <span class="muted">@ {entry.company}</span></span>
+					<span class="period">{entry.period}</span>
+				</div>
 			</li>
 		{/each}
 	</ul>
@@ -45,7 +47,6 @@
 						{#if project.repo}<a href={project.repo} target="_blank" rel="noopener">code</a>{/if}
 					</span>
 				</div>
-				<p class="muted">{project.description}</p>
 			</li>
 		{/each}
 	</ul>
@@ -91,8 +92,9 @@
 	}
 
 	.period {
-		color: var(--accent);
-		opacity: 0.8;
+		color: var(--muted);
+		font-size: 0.85rem;
+		white-space: nowrap;
 	}
 
 	.links {
@@ -110,9 +112,5 @@
 	.sep {
 		margin: 0 0.4em;
 		color: var(--border);
-	}
-
-	p {
-		font-size: 0.9rem;
 	}
 </style>
