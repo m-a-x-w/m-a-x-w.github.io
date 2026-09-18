@@ -42,9 +42,13 @@
 				<div class="row">
 					<a href="/projects/{project.slug}"><strong>{project.title}</strong></a>
 					<span class="links muted">
-						{#if project.url}<a href={project.url}>site</a>{/if}
-						{#if project.url && project.repo}<span class="sep">/</span>{/if}
-						{#if project.repo}<a href={project.repo} target="_blank" rel="noopener">code</a>{/if}
+						<a href="/projects/{project.slug}">details</a>
+						{#if project.url}<span class="sep">/</span><a href={project.url}>site</a>{/if}
+						{#if project.repo}<span class="sep">/</span><a
+								href={project.repo}
+								target="_blank"
+								rel="noopener">code</a
+							>{/if}
 					</span>
 				</div>
 			</li>
